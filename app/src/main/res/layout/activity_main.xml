@@ -67,8 +67,7 @@
                 android:drawableStart="@drawable/ic_calendar"
                 android:drawablePadding="10dp"
                 android:padding="10dp"
-                android:text="Today"
-
+                android:hint="Select the date"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -80,7 +79,6 @@
                 android:drawableStart="@drawable/ic_category"
                 android:drawablePadding="10dp"
                 android:hint="Health,car,hotel.."
-                android:text="Expense"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
@@ -94,7 +92,6 @@
                 android:drawablePadding="10dp"
                 android:hint="Add Note.."
                 android:padding="10dp"
-                android:text="Expense Detail"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 

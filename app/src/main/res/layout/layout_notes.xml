@@ -2,39 +2,87 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/background"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_amount"
-        android:text="Amount"
 
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="amount"
-        android:textStyle="bold" />
+        android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/tv_cat"
-        android:text="category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="amount"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/background"
+            android:padding="10dp"
+            android:src="@drawable/ic_shopping" />
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="amount"
-        android:text="date"
-        android:textStyle="bold" />
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageview"
+            android:columnCount="2">
 
-    <TextView
-        android:id="@+id/tv_note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="amount"
-        android:text="note"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_cat"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="9dp"
+                android:layout_toRightOf="@+id/imageview"
+                android:hint="amount"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:text="category"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_cat"
+                android:drawableStart="@drawable/ic_rupee_dark"
+                android:hint="amount"
+                android:text="Amount"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_note"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pbar"
+                android:layout_toRightOf="@+id/tv_date"
+                android:layout_weight="1"
+                android:hint="amount"
+                android:text="note"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pbar"
+                android:layout_toRightOf="@+id/imageview"
+                android:layout_weight="1"
+                android:hint="amount"
+                android:text="date"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+        </GridLayout>
+    </RelativeLayout>
 </LinearLayout>

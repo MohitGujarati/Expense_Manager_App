@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import mohit.dev.expensemanager.Model.Notes_ModelClass
@@ -32,6 +33,8 @@ class Mynotes_Adapter(var context: Context, var Notes_Arraylist: MutableList<Not
         holder.tvnote.text = mymodel.user_note
 
 
+
+
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +48,7 @@ class Mynotes_Adapter(var context: Context, var Notes_Arraylist: MutableList<Not
         var tvcategory = itemView.findViewById<TextView>(R.id.tv_cat)
         var tvdate = itemView.findViewById<TextView>(R.id.tv_date)
         var tvnote = itemView.findViewById<TextView>(R.id.tv_note)
+        var pb_bar = itemView.findViewById<ProgressBar>(R.id.pbar)
 
 
     }

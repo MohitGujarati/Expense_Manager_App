@@ -4,13 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isEmpty
-import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import mohit.dev.expensemanager.Adpter.Mynotes_Adapter
-import mohit.dev.expensemanager.Database.Note_DatabaseHelper
+import mohit.dev.expensemanager.Database.note_database
 import mohit.dev.expensemanager.Model.Notes_ModelClass
 import mohit.dev.expensemanager.R
 import java.util.*
@@ -34,26 +32,17 @@ class User_Notes : AppCompatActivity() {
         //Todo:Make recycler view like we did in other example and set the data as we did with
         //TODO:Follow this method
 
-        if (rec_notes.isEmpty() == false) {
+
+
             rec_notes.layoutManager = LinearLayoutManager(this)
 
-            var note_db_helper = Note_DatabaseHelper(this)
+            var db_helper = note_database(this)
 
             var userlist: MutableList<Notes_ModelClass>
-            userlist = note_db_helper.getAllNotes()
+            userlist = db_helper.getall_Note()
 
             var connect_Adapter = Mynotes_Adapter(this, userlist)
             rec_notes.adapter = connect_Adapter
-
-        } else if (rec_notes.size >= 1) {
-            tv_curmonth.text = "${rec_notes.size.toString()}"
-        } else {
-            tv_curmonth.text = "Empty"
-
-        }
-
-
-
 
 
         btn_addnotes.setOnClickListener {

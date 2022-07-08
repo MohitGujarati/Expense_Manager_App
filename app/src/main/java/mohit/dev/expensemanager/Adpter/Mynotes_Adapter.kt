@@ -41,7 +41,7 @@ class Mynotes_Adapter(var context: Context, var Notes_Arraylist: MutableList<Not
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
 
-        var tvamount = itemView.findViewById<TextView>(R.id.amount)
+        var tvamount = itemView.findViewById<TextView>(R.id.tv_amount)
         var tvcategory = itemView.findViewById<TextView>(R.id.tv_cat)
         var tvdate = itemView.findViewById<TextView>(R.id.tv_date)
         var tvnote = itemView.findViewById<TextView>(R.id.tv_note)

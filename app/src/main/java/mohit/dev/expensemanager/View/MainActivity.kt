@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import mohit.de.Category_DatabaseHelper
 import mohit.dev.expensemanager.Adpter.Mycategory_Adapter
-import mohit.dev.expensemanager.Database.Note_DatabaseHelper
+import mohit.dev.expensemanager.Database.note_database
 import mohit.dev.expensemanager.Model.Notes_ModelClass
 import mohit.dev.expensemanager.Model.userModel
 import mohit.dev.expensemanager.R
@@ -31,7 +32,32 @@ class MainActivity : AppCompatActivity() {
         var tv_date = findViewById<TextView>(R.id.tv_seletedate)
         var ed_note = findViewById<EditText>(R.id.ed_note)
         var tv_addcategory = findViewById<TextView>(R.id.tv_addcategory)
-        val btn_done = findViewById<ExtendedFloatingActionButton>(R.id.btn_done)
+        var btn_done = findViewById<ExtendedFloatingActionButton>(R.id.btn_done)
+
+        var dbhelper = note_database(this)
+        btn_done.setOnClickListener {
+
+           var amount= ed_amount.text.toString()
+            var category=ed_categoryname.text.toString()
+           var note= ed_note.text.toString()
+            var date=tv_date.text.toString()
+
+
+            var id = dbhelper.note_insertdata(
+                Notes_ModelClass(
+                    it.id,
+                   "$amount","$category","$note","$date"
+                )
+            )
+
+            var intent = Intent(this, User_Notes::class.java)
+            Log.d("notesimpdata","$id \"$amount\",\"$category\",\"$note\",\"$date\"")
+            Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+
+
+        }
+
 
 
         //date
@@ -42,7 +68,11 @@ class MainActivity : AppCompatActivity() {
 
 
         //setting onclick recview data
+
         var categoryname = getIntent().getStringExtra("categoryname")
+        if (categoryname==null){
+            ed_categoryname.setText("Enter the category")
+        }else
         ed_categoryname.setText(categoryname.toString())
 
         //recview
@@ -86,29 +116,6 @@ class MainActivity : AppCompatActivity() {
                     .show()
         }
 
-
-        var dbhelper = Note_DatabaseHelper(this)
-        btn_done.setOnClickListener {
-
-            var id = dbhelper.note_insertdata(
-                Notes_ModelClass(
-                    it.id,
-                    ed_amount.text.toString(),
-                    ed_categoryname.text.toString(),
-                    ed_note.text.toString(),
-                    tv_date.text.toString()
-                )
-            )
-            if (id > 0) {
-                var intent = Intent(this, User_Notes::class.java)
-                   Toast.makeText(this, "saved at $id", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }
 
 
     }

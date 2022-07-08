@@ -11,19 +11,21 @@
         android:theme="@style/Theme.ExpenseManager">
         <activity
             android:name=".View.User_Notes"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_userdata"
             android:theme="@style/Theme.ExpenseManager.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
             android:name=".View.MainActivity"
             android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>

@@ -5,7 +5,9 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/tv_amount"
+        android:text="Amount"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="amount"
@@ -13,6 +15,7 @@
 
     <TextView
         android:id="@+id/tv_cat"
+        android:text="category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="amount"
@@ -23,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="amount"
+        android:text="date"
         android:textStyle="bold" />
 
     <TextView
@@ -30,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="amount"
+        android:text="note"
         android:textStyle="bold" />
 
 </LinearLayout>

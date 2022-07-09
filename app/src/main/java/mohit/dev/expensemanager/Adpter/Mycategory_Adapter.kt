@@ -12,11 +12,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import mohit.de.Category_DatabaseHelper
-import mohit.dev.expensemanager.Model.userModel
+import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.R
 import mohit.dev.expensemanager.View.MainActivity
 
-class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<userModel>) :
+class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Category_ModelClass>) :
     RecyclerView.Adapter<Mycategory_Adapter.ViewHolder>() {
 
 
@@ -54,7 +54,7 @@ class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<us
         holder.btn_delete.setOnClickListener {
             var dbhelper = Category_DatabaseHelper(context)
             Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show()
-            var id_delete = dbhelper.delete(userModel(mymodel.userid, ""))
+            var id_delete = dbhelper.delete(Category_ModelClass(mymodel.userid, ""))
             var k = Intent(context, MainActivity::class.java)
             context.startActivity(k)
         }

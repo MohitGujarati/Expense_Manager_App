@@ -8,7 +8,7 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import mohit.dev.expensemanager.Model.userModel
+import mohit.dev.expensemanager.Model.Category_ModelClass
 
 class Category_DatabaseHelper(var context: Context) :
     SQLiteOpenHelper(context, category_DATABASE_NAME, null, category_DATABASE_VERSION) {
@@ -41,20 +41,24 @@ class Category_DatabaseHelper(var context: Context) :
         TODO("Not yet implemented")
     }
 
-    fun insertData(userModel: userModel): Long {
+    fun insertData(Category_ModelClass: Category_ModelClass): Long {
         var db = this.writableDatabase
         var cv = ContentValues()
 
-        cv.put(category_KEY_categoryname, userModel.userCategory)
+        cv.put(category_KEY_categoryname, Category_ModelClass.userCategory)
 
         var inserData = db.insert(category_TABLE_NAME, null, cv)
         return inserData
     }
 
-    @SuppressLint("Range")
-    fun getAllData(): MutableList<userModel> {
 
-        var userlist: MutableList<userModel> = ArrayList()
+
+
+
+    @SuppressLint("Range")
+    fun getAllData(): MutableList<Category_ModelClass> {
+
+        var userlist: MutableList<Category_ModelClass> = ArrayList()
         var sel_que = "select * from $category_TABLE_NAME ORDER BY $category_KEY_ID DESC "
 
         var cursor: Cursor?
@@ -78,7 +82,7 @@ class Category_DatabaseHelper(var context: Context) :
                     category = cursor.getString(cursor.getColumnIndex(category_KEY_categoryname))
 
 
-                    var userdata = userModel(userid, category)
+                    var userdata = Category_ModelClass(userid, category)
                     userlist.add(userdata)
 
 
@@ -89,10 +93,10 @@ class Category_DatabaseHelper(var context: Context) :
         return userlist
     }
 
-    fun delete(userModel: userModel):Int{
+    fun delete(Category_ModelClass: Category_ModelClass):Int{
 
         var db =this.writableDatabase
-        var id_del=db.delete(category_TABLE_NAME,category_KEY_ID+"="+userModel.userid,null)
+        var id_del=db.delete(category_TABLE_NAME,category_KEY_ID+"="+Category_ModelClass.userid,null)
         db.close()
 
         return id_del

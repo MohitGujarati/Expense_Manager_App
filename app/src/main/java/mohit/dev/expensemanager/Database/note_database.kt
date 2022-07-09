@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import mohit.dev.expensemanager.Model.Notes_ModelClass
 
 class note_database(var note_context: Context) :
@@ -44,6 +45,8 @@ class note_database(var note_context: Context) :
         TODO("Not yet implemented")
     }
 
+    lateinit var model:Notes_ModelClass
+
     fun note_insertdata(notesModelclass: Notes_ModelClass):Long{
 
         var note_db=this.writableDatabase
@@ -59,6 +62,54 @@ class note_database(var note_context: Context) :
         return note_insert
 
     }
+
+    @SuppressLint("Range")
+    fun filterdata(month:Int,notesModelclass: Notes_ModelClass):MutableList<Notes_ModelClass>{
+
+        var note_userlist:MutableList<Notes_ModelClass> =ArrayList()
+        var query="select * from $note_TABLE_NAME where ${notesModelclass.user_date} = '19/9/2022' order by $note_KEY_ID desc"
+
+        var cursor:Cursor?
+        var note_db=this.readableDatabase
+
+        Log.d("filter","${notesModelclass.user_date} month is $month",  )
+
+        try {
+            cursor=note_db.rawQuery(query,null)
+        }catch (Exception: SQLException) {
+            note_db.execSQL(query)
+            return ArrayList()
+        }
+
+        var noteid: Int
+        var amount: String
+        var date: String
+        var category: String
+        var note: String
+
+
+        if (cursor.count > 0) {
+            if (cursor.moveToFirst()) {
+
+                do {
+                    noteid = cursor.getInt(cursor.getColumnIndex(note_KEY_ID))
+                    amount = cursor.getString(cursor.getColumnIndex(note_KEY_AMOUNT))
+                    category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
+                    note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
+                    date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
+
+
+                    var userdatas = Notes_ModelClass(noteid,amount,category,note,date)
+                    note_userlist.add(userdatas)
+
+
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return note_userlist
+    }
+
 
     @SuppressLint("Range")
     fun getall_Note():MutableList<Notes_ModelClass>{
@@ -93,7 +144,6 @@ class note_database(var note_context: Context) :
                     note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
                     date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
 
-
                     var userdatas = Notes_ModelClass(noteid,amount,category,note,date)
                     note_userlist.add(userdatas)
 
@@ -105,5 +155,12 @@ class note_database(var note_context: Context) :
         return note_userlist
     }
 
+    fun note_delete(notesModelclass: Notes_ModelClass):Int{
+
+        var note_db=this.writableDatabase
+        var note_del=note_db.delete(note_TABLE_NAME, note_KEY_ID+"="+ notesModelclass.noteid,null)
+        return note_del
+
+    }
 
 }

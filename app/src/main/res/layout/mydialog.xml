@@ -31,14 +31,15 @@
             android:src="@drawable/ic_shopping"
             android:padding="8dp"/>
 
-        <TextView
+        <EditText
 
+            android:id="@+id/tv_emoji"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/iv_btn"
             android:padding="15dp"
+            android:hint=" Select Category Icon"
             android:textSize="16dp"
-            android:text=" Select Category Icon"
             android:textStyle="bold" />
 
 

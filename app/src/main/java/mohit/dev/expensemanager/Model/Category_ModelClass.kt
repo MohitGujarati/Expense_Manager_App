@@ -1,6 +1,6 @@
 package mohit.dev.expensemanager.Model
 
-class userModel(
+class Category_ModelClass(
     var userid:Int,
     var userCategory:String
 ) {

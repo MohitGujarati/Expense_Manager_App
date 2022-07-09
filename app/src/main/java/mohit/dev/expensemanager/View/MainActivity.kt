@@ -17,12 +17,15 @@ import mohit.de.Category_DatabaseHelper
 import mohit.dev.expensemanager.Adpter.Mycategory_Adapter
 import mohit.dev.expensemanager.Database.note_database
 import mohit.dev.expensemanager.Model.Notes_ModelClass
-import mohit.dev.expensemanager.Model.userModel
+import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.R
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -35,29 +38,39 @@ class MainActivity : AppCompatActivity() {
         var btn_done = findViewById<ExtendedFloatingActionButton>(R.id.btn_done)
 
         var dbhelper = note_database(this)
+
+
         btn_done.setOnClickListener {
 
-           var amount= ed_amount.text.toString()
-            var category=ed_categoryname.text.toString()
-           var note= ed_note.text.toString()
-            var date=tv_date.text.toString()
+            var amount = ed_amount.text.toString()
+            var category = ed_categoryname.text.toString()
+            var note = ed_note.text.toString()
+            var date = tv_date.text.toString()
+
+
+            var passamount = ed_amount.text
 
 
             var id = dbhelper.note_insertdata(
                 Notes_ModelClass(
                     it.id,
-                   "$amount","$category","$note","$date"
+                    "$amount", "$category", "$note", "$date"
                 )
             )
 
-            var intent = Intent(this, User_Notes::class.java)
-            Log.d("notesimpdata","$id \"$amount\",\"$category\",\"$note\",\"$date\"")
-            Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
-            startActivity(intent)
+            var i = Intent(this, User_Notes::class.java)
+            Log.d("notesimpdata", "$id \"$amount\" and final amount is")
+            i.putExtra("passed",ed_amount.text.toString())
+            Toast.makeText(
+                this,
+                "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}",
+                Toast.LENGTH_SHORT
+            ).show()
+            startActivity(i)
 
+            Log.d("dates", date)
 
         }
-
 
 
         //date
@@ -70,10 +83,10 @@ class MainActivity : AppCompatActivity() {
         //setting onclick recview data
 
         var categoryname = getIntent().getStringExtra("categoryname")
-        if (categoryname==null){
+        if (categoryname == null) {
             ed_categoryname.setText("Enter the category")
-        }else
-        ed_categoryname.setText(categoryname.toString())
+        } else
+            ed_categoryname.setText(categoryname.toString())
 
         //recview
         load_category(rec_cat)
@@ -90,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             var dbhelper = Category_DatabaseHelper(this)
 
             btn_savecategory.setOnClickListener {
-                var id = dbhelper.insertData(userModel(it.id, dialog_categoryname.text.toString()))
+                var id = dbhelper.insertData(Category_ModelClass(it.id, dialog_categoryname.text.toString()))
                 if (id > 0) {
                     var intent = Intent(this, MainActivity::class.java)
                     //   Toast.makeText(this, "saved at $id", Toast.LENGTH_SHORT).show()
@@ -117,7 +130,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
     }
 
 
@@ -127,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
         var db_helper = Category_DatabaseHelper(this)
 
-        var userlist: MutableList<userModel>
+        var userlist: MutableList<Category_ModelClass>
         userlist = db_helper.getAllData()
 
         var connect_Adapter = Mycategory_Adapter(this, userlist)

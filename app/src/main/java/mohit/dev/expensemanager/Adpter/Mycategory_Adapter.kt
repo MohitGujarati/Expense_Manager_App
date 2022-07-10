@@ -3,6 +3,7 @@ package mohit.dev.expensemanager.Adpter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import mohit.de.Category_DatabaseHelper
 import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.R
 import mohit.dev.expensemanager.View.MainActivity
+import kotlin.random.Random
 
 class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Category_ModelClass>) :
     RecyclerView.Adapter<Mycategory_Adapter.ViewHolder>() {
@@ -34,6 +36,8 @@ class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Ca
 
         // holder.img.setImageResource(mymodel.img)
         holder.title.text = mymodel.userCategory
+
+
 
         var onclick = true
 

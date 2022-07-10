@@ -36,7 +36,7 @@
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:drawableEnd="@drawable/ic_category_add"
                 android:text="Category"
                 android:textAlignment="gravity"

@@ -14,28 +14,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="000"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
         style="@style/TextAppearance.AppCompat.Title"
         android:drawableStart="@drawable/ic_rupee"
         android:textSize="50dp"
         android:background="@drawable/background"
         android:padding="5dp"
-        android:layout_margin="10dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_Leftcash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_weight="1"
+        android:background="@drawable/background"
+        android:layout_below="@+id/tv_totalExpence"
+        android:layout_marginLeft="10dp"
+        android:drawableStart="@drawable/ic_rupee"
+        android:textSize="16dp"
+
         android:textStyle="bold"/>
 
 
     <LinearLayout
-        android:layout_below="@+id/tv_totalExpence"
-        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_Leftcash"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="10dp"
         android:padding="2dp"
         android:background="@drawable/background"
         android:id="@+id/ll"
         android:orientation="horizontal">
-
-
-
-
         <Spinner
             android:id="@+id/id_spinner"
             android:layout_width="wrap_content"
@@ -60,18 +74,7 @@
 
 
 
-        <TextView
-            android:id="@+id/tv_Leftcash"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Amount"
-            style="@style/TextAppearance.AppCompat.Body2"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:drawableStart="@drawable/ic_rupee"
-            android:textSize="16dp"
-            android:layout_margin="10dp"
-            android:textStyle="bold"/>
+
 
     </LinearLayout>
 
@@ -122,21 +125,6 @@
             android:src="@drawable/ic_history"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/budget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:background="@drawable/background"
-            android:padding="5dp"
-            android:src="@drawable/ic_budget"
-            app:layout_constraintBottom_toBottomOf="@+id/viewhistory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewhistory"
-            app:layout_constraintVertical_bias="0.0" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

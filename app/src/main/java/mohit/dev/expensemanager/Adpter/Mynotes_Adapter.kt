@@ -3,6 +3,7 @@ package mohit.dev.expensemanager.Adpter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,10 @@ class Mynotes_Adapter(var context: Context, var Notes_Arraylist: MutableList<Not
         holder.tvdate.text = mymodel.user_date
         holder.tvnote.text = mymodel.user_note
 
+        val rnd = java.util.Random()
+        val color: Int = Color.argb(200, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+        holder.imageview.setBackgroundColor(color)
+
         holder.iv_btndelete.setOnClickListener {
             var dbhelper = note_database(context)
 
@@ -60,6 +65,7 @@ class Mynotes_Adapter(var context: Context, var Notes_Arraylist: MutableList<Not
         var tvdate = itemView.findViewById<TextView>(R.id.tv_date)
         var tvnote = itemView.findViewById<TextView>(R.id.tv_note)
         var iv_btndelete=itemView.findViewById<ImageView>(R.id.iv_btndelete)
+        var imageview=itemView.findViewById<ImageView>(R.id.imageview)
 
 
     }

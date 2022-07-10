@@ -8,5 +8,6 @@ class Notes_ModelClass(
     var user_note:String,
     var user_date:String,
 
+
 ) {
 }

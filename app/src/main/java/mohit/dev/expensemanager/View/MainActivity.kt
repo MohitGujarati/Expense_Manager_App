@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -37,8 +38,24 @@ class MainActivity : AppCompatActivity() {
         var tv_addcategory = findViewById<TextView>(R.id.tv_addcategory)
         var btn_done = findViewById<ExtendedFloatingActionButton>(R.id.btn_done)
 
-        var dbhelper = note_database(this)
 
+        //date
+        var Todaydate = Calendar.getInstance()
+        var year = Todaydate.get(Calendar.YEAR)
+        var month = Todaydate.get(Calendar.MONTH)
+        var day = Todaydate.get(Calendar.DAY_OF_MONTH)
+
+        tv_date.setOnClickListener {
+            var datepickerbox =
+                DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, d ->
+                   var  set_month = month + 1
+                    tv_date.text = "$d/$set_month/$year "
+
+                }, year, month, day)
+                    .show()
+        }
+
+        var dbhelper = note_database(this)
 
         btn_done.setOnClickListener {
 
@@ -51,21 +68,18 @@ class MainActivity : AppCompatActivity() {
             var passamount = ed_amount.text
 
 
-            var id = dbhelper.note_insertdata(
-                Notes_ModelClass(
-                    it.id,
-                    "$amount", "$category", "$note", "$date"
+                var id = dbhelper.note_insertdata(
+                    Notes_ModelClass(
+                        it.id,
+                        "$amount", "$category", "$note", "$date"
+                    )
                 )
-            )
+
 
             var i = Intent(this, User_Notes::class.java)
-            Log.d("notesimpdata", "$id \"$amount\" and final amount is")
+           // Log.d("notesimpdata", "$id \"$amount\" and final amount is")
             i.putExtra("passed",Integer.valueOf(amount))
-            Toast.makeText(
-                this,
-                "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}",
-                Toast.LENGTH_SHORT
-            ).show()
+           // Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
             startActivity(i)
 
             Log.d("dates", date)
@@ -73,11 +87,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        //date
-        var Todaydate = Calendar.getInstance()
-        var year = Todaydate.get(Calendar.YEAR)
-        var month = Todaydate.get(Calendar.MONTH)
-        var day = Todaydate.get(Calendar.DAY_OF_MONTH)
+
 
 
         //setting onclick recview data
@@ -119,15 +129,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //take date from recview
-        tv_date.setOnClickListener {
-            var datepickerbox =
-                DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, d ->
-                    var m = month + 1
-                    tv_date.text = "$d/$m/$year "
 
-                }, year, month, day)
-                    .show()
-        }
+
 
 
     }

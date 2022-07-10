@@ -23,6 +23,7 @@ class note_database(var note_context: Context) :
         private const val note_KEY_CATEGORY = "note_category"
         private const val note_KEY_NOTES = "user_note"
         private const val note_KEY_DATE = "user_date"
+
     }
 
 
@@ -61,53 +62,6 @@ class note_database(var note_context: Context) :
         var note_insert=note_db.insert(note_TABLE_NAME,null,note_cv)
         return note_insert
 
-    }
-
-    @SuppressLint("Range")
-    fun filterdata(month:Int,notesModelclass: Notes_ModelClass):MutableList<Notes_ModelClass>{
-
-        var note_userlist:MutableList<Notes_ModelClass> =ArrayList()
-        var query="select * from $note_TABLE_NAME where ${notesModelclass.user_date} = '19/9/2022' order by $note_KEY_ID desc"
-
-        var cursor:Cursor?
-        var note_db=this.readableDatabase
-
-        Log.d("filter","${notesModelclass.user_date} month is $month",  )
-
-        try {
-            cursor=note_db.rawQuery(query,null)
-        }catch (Exception: SQLException) {
-            note_db.execSQL(query)
-            return ArrayList()
-        }
-
-        var noteid: Int
-        var amount: String
-        var date: String
-        var category: String
-        var note: String
-
-
-        if (cursor.count > 0) {
-            if (cursor.moveToFirst()) {
-
-                do {
-                    noteid = cursor.getInt(cursor.getColumnIndex(note_KEY_ID))
-                    amount = cursor.getString(cursor.getColumnIndex(note_KEY_AMOUNT))
-                    category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
-                    note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
-                    date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
-
-
-                    var userdatas = Notes_ModelClass(noteid,amount,category,note,date)
-                    note_userlist.add(userdatas)
-
-
-                } while (cursor.moveToNext())
-            }
-        }
-
-        return note_userlist
     }
 
 
@@ -172,6 +126,8 @@ class note_database(var note_context: Context) :
         var date: String
         var category: String
         var note: String
+        var month:Int
+
 
 
         if (cursor.count > 0) {
@@ -183,6 +139,7 @@ class note_database(var note_context: Context) :
                     category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
                     note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
                     date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
+
 
                     var userdatas = Notes_ModelClass(noteid,amount,category,note,date)
                     note_userlist.add(userdatas)

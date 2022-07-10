@@ -13,7 +13,8 @@
         android:id="@+id/tv_totalExpence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1000"
+        android:text="000"
+        style="@style/TextAppearance.AppCompat.Title"
         android:drawableStart="@drawable/ic_rupee"
         android:textSize="50dp"
         android:background="@drawable/background"
@@ -35,24 +36,22 @@
 
 
 
-        <TextView
-            android:id="@+id/tv_curmonth"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/id_spinner"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CurrentMonth"
-            android:singleLine="true"
-            android:textSize="16dp"
-            android:layout_weight="1"
-            android:textAllCaps="true"
-            android:textAlignment="center"
             android:layout_margin="10dp"
-            android:textStyle="bold"/>
+            android:entries="@array/spinner"
+            android:padding="10dp"
+            />
+
 
         <TextView
             android:id="@+id/txt_budget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Budget"
+            android:text="0"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:textAlignment="center"
             android:layout_weight="1"
             android:textSize="16dp"
@@ -66,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Amount"
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_weight="1"
             android:textAlignment="center"
             android:drawableStart="@drawable/ic_rupee"
@@ -74,6 +74,7 @@
             android:textStyle="bold"/>
 
     </LinearLayout>
+
 
 
 
@@ -109,6 +110,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.895" />
+
+        <ImageView
+            android:id="@+id/viewhistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/background"
+            android:padding="5dp"
+            android:src="@drawable/ic_history"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/background"
+            android:padding="5dp"
+            android:src="@drawable/ic_budget"
+            app:layout_constraintBottom_toBottomOf="@+id/viewhistory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewhistory"
+            app:layout_constraintVertical_bias="0.0" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

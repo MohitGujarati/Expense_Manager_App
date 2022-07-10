@@ -23,6 +23,7 @@ class note_database(var note_context: Context) :
         private const val note_KEY_CATEGORY = "note_category"
         private const val note_KEY_NOTES = "user_note"
         private const val note_KEY_DATE = "user_date"
+        private const val note_KEY_MONTH = "user_month"
 
     }
 
@@ -35,6 +36,7 @@ class note_database(var note_context: Context) :
                             + note_KEY_AMOUNT.toString() + " TEXT, " + ""
                             + note_KEY_CATEGORY.toString() + " TEXT,"
                             + note_KEY_NOTES.toString() + " TEXT,"
+                            + note_KEY_MONTH.toString() + " INTEGER,"
                             + note_KEY_DATE.toString() + " TEXT)"
                     )
 
@@ -58,6 +60,7 @@ class note_database(var note_context: Context) :
         note_cv.put(note_KEY_CATEGORY,notesModelclass.user_category)
         note_cv.put(note_KEY_DATE,notesModelclass.user_date)
         note_cv.put(note_KEY_NOTES,notesModelclass.user_note)
+        note_cv.put(note_KEY_MONTH,notesModelclass.user_month)
 
         var note_insert=note_db.insert(note_TABLE_NAME,null,note_cv)
         return note_insert
@@ -139,9 +142,10 @@ class note_database(var note_context: Context) :
                     category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
                     note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
                     date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
+                    month = cursor.getInt(cursor.getColumnIndex(note_KEY_MONTH))
 
 
-                    var userdatas = Notes_ModelClass(noteid,amount,category,note,date)
+                    var userdatas = Notes_ModelClass(noteid,amount,category,note,date,month)
                     note_userlist.add(userdatas)
 
 
@@ -158,6 +162,54 @@ class note_database(var note_context: Context) :
         var note_del=note_db.delete(note_TABLE_NAME, note_KEY_ID+"="+ notesModelclass.noteid,null)
         return note_del
 
+    }
+
+    @SuppressLint("Range")
+    fun getmonth(month:Int):MutableList<Notes_ModelClass>{
+
+        var note_userlist:MutableList<Notes_ModelClass> =ArrayList()
+        var query="select * from $note_TABLE_NAME where $note_KEY_MONTH = $month order by $note_KEY_ID desc"
+
+        var cursor:Cursor?
+        var note_db=this.readableDatabase
+
+        try {
+            cursor=note_db.rawQuery(query,null)
+        }catch (Exception: SQLException) {
+            note_db.execSQL(query)
+            return ArrayList()
+        }
+
+        var noteid: Int
+        var amount: String
+        var date: String
+        var category: String
+        var note: String
+        var month:Int
+
+
+
+        if (cursor.count > 0) {
+            if (cursor.moveToFirst()) {
+
+                do {
+                    noteid = cursor.getInt(cursor.getColumnIndex(note_KEY_ID))
+                    amount = cursor.getString(cursor.getColumnIndex(note_KEY_AMOUNT))
+                    category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
+                    note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
+                    date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
+                    month = cursor.getInt(cursor.getColumnIndex(note_KEY_MONTH))
+
+
+                    var userdatas = Notes_ModelClass(noteid,amount,category,note,date,month)
+                    note_userlist.add(userdatas)
+
+
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return note_userlist
     }
 
 }

@@ -45,10 +45,11 @@ class MainActivity : AppCompatActivity() {
         var month = Todaydate.get(Calendar.MONTH)
         var day = Todaydate.get(Calendar.DAY_OF_MONTH)
 
+        var set_month=0
         tv_date.setOnClickListener {
-            var datepickerbox =
+            var datepickerobx =
                 DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, d ->
-                   var  set_month = month + 1
+                    set_month = month + 1
                     tv_date.text = "$d/$set_month/$year "
 
                 }, year, month, day)
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 var id = dbhelper.note_insertdata(
                     Notes_ModelClass(
                         it.id,
-                        "$amount", "$category", "$note", "$date"
+                        "$amount", "$category", "$note", "$date",set_month
                     )
                 )
 

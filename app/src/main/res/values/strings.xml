@@ -17,6 +17,24 @@
     </string-array>
 
 
+    <string-array name="spinner_history">
+
+        <item>month</item>
+        <item>Jan</item>
+        <item>feb</item>
+        <item>Mar</item>
+        <item>April</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>July</item>
+        <item>Aug</item>
+        <item>sep</item>
+        <item>oct</item>
+        <item>Nov</item>
+        <item>dec</item>
+    </string-array>
+
+
 
     <string name="app_name">Expense Manager</string>
     <!-- TODO: Remove or change this placeholder text -->

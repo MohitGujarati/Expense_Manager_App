@@ -39,7 +39,7 @@ class Mynotes_Adapter(var context: Context, var Notes_Arraylist: MutableList<Not
             var dbhelper = note_database(context)
 
             Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show()
-            var id_delete = dbhelper.note_delete(Notes_ModelClass(mymodel.noteid, "","","",""))
+            var id_delete = dbhelper.note_delete(Notes_ModelClass(mymodel.noteid, "","","","",0))
             var i = Intent(context, User_Notes::class.java)
             context.startActivity(i)
         }

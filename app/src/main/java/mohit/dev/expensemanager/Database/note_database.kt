@@ -112,6 +112,46 @@ class note_database(var note_context: Context) :
 
 
     @SuppressLint("Range")
+    fun getamount():MutableList<Int> {
+
+        var amount_list:MutableList<Int> =ArrayList()
+
+        var getamountquery="select * from $note_TABLE_NAME order by $note_KEY_ID desc"
+
+        var cursor:Cursor?
+        var amount_db=this.readableDatabase
+
+
+        try {
+            cursor=amount_db.rawQuery(getamountquery,null)
+        }catch (Exception: SQLException) {
+            amount_db.execSQL(getamountquery)
+            return ArrayList()
+        }
+
+        var amount:String
+
+        if (cursor.count > 0) {
+            if (cursor.moveToFirst()) {
+
+                do {
+
+                    amount = cursor.getString(cursor.getColumnIndex(note_KEY_AMOUNT))
+
+                    var userdatas =
+                    amount_list.add(Integer.valueOf(amount))
+
+
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return amount_list
+
+    }
+
+
+    @SuppressLint("Range")
     fun getall_Note():MutableList<Notes_ModelClass>{
 
         var note_userlist:MutableList<Notes_ModelClass> =ArrayList()

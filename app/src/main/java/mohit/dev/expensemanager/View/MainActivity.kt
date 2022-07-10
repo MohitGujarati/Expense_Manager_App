@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
             var i = Intent(this, User_Notes::class.java)
             Log.d("notesimpdata", "$id \"$amount\" and final amount is")
-            i.putExtra("passed",ed_amount.text.toString())
+            i.putExtra("passed",Integer.valueOf(amount))
             Toast.makeText(
                 this,
                 "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}",

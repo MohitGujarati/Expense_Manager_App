@@ -2,6 +2,7 @@ package mohit.dev.expensemanager.View
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,14 +37,54 @@ class User_Notes : AppCompatActivity() {
 
 
 
-        setmonth(month,currentmonth,txt_budget)
+
+
+        setmonth(month, currentmonth, txt_budget)
 
         loadrecview(rec_notes)
+
+        loadamount(totalamount)
+
+
+
+        if (txt_budget.text != null && totalamount.text != null) {
+            amountleft(txt_budget, totalamount, tv_Leftcash)
+        } else {
+            txt_budget.text == "0" && totalamount.text == "0" && tv_Leftcash.text == "0"
+        }
+
+
 
         btn_addnotes.setOnClickListener {
             var i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
+
+
+    }
+
+    private fun loadamount(totalamount: TextView) {
+        var db_helper = note_database(this)
+
+        var amountlist: MutableList<Int>
+        amountlist = db_helper.getamount()
+
+        var sum=0
+        for (i in 0..amountlist.size-1){
+
+            var amountlistdata=sum+amountlist[i]
+            sum=amountlistdata
+        }
+        totalamount.text=sum.toString()
+        Log.d("amount_list_data","$amountlist, sum=$sum")
+
+    }
+
+    private fun amountleft(txt_budget: TextView,totalamount: TextView, tv_Leftcash: TextView) {
+        var intbug = Integer.valueOf(txt_budget.text.toString())
+        var inttotal = Integer.valueOf(totalamount.text.toString())
+
+        tv_Leftcash.text=(intbug - inttotal).toString()+"/-left"
 
 
     }
@@ -66,7 +107,9 @@ class User_Notes : AppCompatActivity() {
         var budget_arraylist = arrayListOf<Int>()
 
         when (month) {
-            0 -> {currentmonth.text = "Jan"}
+            0 -> {
+                currentmonth.text = "Jan"
+            }
             1 -> currentmonth.text = "feb"
             2 -> currentmonth.text = "Mar"
             3 -> currentmonth.text = "April"
@@ -75,7 +118,7 @@ class User_Notes : AppCompatActivity() {
             6 -> {
                 currentmonth.text = "July"
                 budget_arraylist.add(0, 3000)
-                txt_budget.text = budget_arraylist.get(0).toString() + "/-"
+                txt_budget.text = budget_arraylist.get(0).toString()
             }
             7 -> currentmonth.text = "Aug"
             8 -> currentmonth.text = "sep"
@@ -84,75 +127,5 @@ class User_Notes : AppCompatActivity() {
             11 -> currentmonth.text = "Dec"
         }
     }
-
-
-    /*
-    private fun amount(v: Int, tv_totalExpence: TextView) {
-
-        //storedata in arraylist
-        var v = getIntent().getIntExtra("passed", 0)
-
-        if (v != 0) {
-
-
-
-
-/*
-        var amountlist = ArrayList<Int>()
-
-        var amount=0
-        var count=v
-        var main=+count
-
-
-   /*
-        for (i in 0..amountlist.size-1){
-
-            var fc=amountlist[i]+count
-            Log.d("finaltxt"," $fc")
-            tv_totalExpence.text=fc.toString()
-        }
-
-    */
-        var size=amountlist.size-1
-
-        var countfinal=count
-        var final=countfinal+amountlist[size]
-
-        amountlist.add(0)
-        amountlist.add(count)
-        tv_totalExpence.text=final.toString()
-
- */
-
-
-        var array = ArrayList<Int>()
-
-        array.add(v)
-
-        var data = 0
-
-        var size=array.size-1
-
-
-        Log.d("Myfinallist", "${array}")
-        var finaldata =+ array[size]
-        Log.d("Myfinallist", "${finaldata} passed data is $v")
-
-        var finallist=ArrayList<Int>()
-
-        finallist.add(finaldata)
-
-        var finalsize=finallist.size-1
-
-        var txt=finallist[finalsize]+ v
-
-        Log.d("finallist2", "${txt} passed data is $v")
-
-
-        }
-    }
-
-     */
 
 }

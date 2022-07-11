@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="120dp"
     android:layout_height="100dp"
-    android:layout_margin="3dp"
+    android:layout_margin="1dp"
     android:id="@+id/categorylayout"
-    android:background="@color/grey"
+    android:background="@drawable/start_background"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background"
+        android:background="@drawable/background_layout"
         android:padding="1dp"
         android:layout_marginLeft="100dp">
         <ImageView
@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Shopping"
+        android:textColor="@color/white"
         android:textStyle="bold"
         />
 

@@ -1,13 +1,11 @@
 package mohit.dev.expensemanager.View
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mohit.dev.expensemanager.Adpter.Mynotes_Adapter
@@ -20,15 +18,17 @@ class Monthly_History : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_monthly_history)
 
-        var sp_history=findViewById<Spinner>(R.id.sp_history)
-        var iv_arrow=findViewById<ImageView>(R.id.iv_arrow)
-        var tv_amountspend=findViewById<TextView>(R.id.tv_amountspend)
+        var sp_history = findViewById<Spinner>(R.id.sp_history)
+        var iv_arrow = findViewById<ImageView>(R.id.iv_arrow)
+        var tv_monthbudget = findViewById<TextView>(R.id.tv_amountspend)
 
-        var rechistory=findViewById<RecyclerView>(R.id.rec_history)
+        var rechistory = findViewById<RecyclerView>(R.id.rec_history)
+
+        var tv_HistoryExpence = findViewById<TextView>(R.id.tv_HistoryExpence)
+        var tv_historyLeftcash = findViewById<TextView>(R.id.tv_historyLeftcash)
 
 
-
-        var monthpos=0
+        var monthpos = 0
         sp_history.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -37,14 +37,14 @@ class Monthly_History : AppCompatActivity() {
                 id: Long
             ) {
 
-                monthpos=position
+                monthpos = position
 
 
-                setmonth(position, tv_amountspend)
+                setmonth(position, tv_monthbudget)
 
-              //  amountleft(txt_budget, totalamount, tv_Leftcash)
+                //  amountleft(txt_budget, totalamount, tv_Leftcash)
 
-                Log.d("spinnerdata","${"$position =" + sp_history.getItemAtPosition(position)}")
+                Log.d("spinnerdata", "${"$position =" + sp_history.getItemAtPosition(position)}")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -53,25 +53,72 @@ class Monthly_History : AppCompatActivity() {
         }
 
 
-        var onclick=true
+        var onclick = true
 
         iv_arrow.setOnClickListener {
-        if (onclick==true){
-            iv_arrow.setImageResource(R.drawable.ic_arrow_up)
-            rechistory.visibility=View.VISIBLE
-            loadhistrory(monthpos,rechistory)
+            if (onclick == true) {
+                iv_arrow.setImageResource(R.drawable.ic_arrow_up)
+                loadamount(tv_HistoryExpence,monthpos)
+                rechistory.visibility = View.VISIBLE
+                loadhistrory(monthpos, rechistory)
+                if (tv_monthbudget.text != null && tv_HistoryExpence.text != null) {
+                    amountleft(tv_monthbudget, tv_HistoryExpence, tv_historyLeftcash)
+                } else {
+                    Toast.makeText(this, "setting values to zero", Toast.LENGTH_SHORT).show()
+                    tv_monthbudget.text == "0" && tv_HistoryExpence.text == "0" && tv_historyLeftcash.text == "0"
+                }
 
-            onclick=false
-        }else if(onclick==false){
-            iv_arrow.setImageResource(R.drawable.ic_arrow_down)
-            rechistory.visibility=View.GONE
-            onclick=true
-        }
+                onclick = false
+            } else if (onclick == false) {
+                iv_arrow.setImageResource(R.drawable.ic_arrow_down)
+                rechistory.visibility = View.GONE
+                tv_HistoryExpence.text="0"
+                tv_historyLeftcash.text="0"
+                onclick = true
+            }
 
         }
     }
 
-    private fun loadhistrory(history_month: Int,rechistory: RecyclerView) {
+    private fun loadamount(totalamount: TextView, monthpos: Int) {
+        var db_helper = note_database(this)
+
+        var amountlist: MutableList<Int>
+        amountlist = db_helper.getfilteramount(monthpos)
+
+        var sum = 0
+        for (i in 0..amountlist.size - 1) {
+
+            var amountlistdata = sum + amountlist[i]
+            sum = amountlistdata
+        }
+        totalamount.text = sum.toString()
+        Log.d("amount_list_data", "$amountlist, sum=$sum")
+
+    }
+
+    private fun amountleft(
+        txt_budget: TextView,
+        totalamount: TextView,
+        tv_Leftcash: TextView,
+    ) {
+        var intbug = Integer.valueOf(txt_budget.text.toString())
+        var inttotal = Integer.valueOf(totalamount.text.toString())
+
+        var intleft = (intbug - inttotal)
+        tv_Leftcash.setTextColor(ContextCompat.getColor(this, R.color.green));
+        tv_Leftcash.text = (intbug - inttotal).toString()
+
+        if (intleft <= 0) {
+            tv_Leftcash.text = (intbug - inttotal).toString()
+            tv_Leftcash.setTextColor(ContextCompat.getColor(this, R.color.red));
+        }
+
+
+    }
+
+
+    private fun loadhistrory(history_month: Int, rechistory: RecyclerView) {
         rechistory.layoutManager = LinearLayoutManager(this)
 
         var db_helper = note_database(this)
@@ -88,7 +135,7 @@ class Monthly_History : AppCompatActivity() {
     private fun setmonth(month: Int, txt_budget: TextView) {
 
         var budget_arraylist = arrayListOf<Int>()
-        budget_arraylist.add(0, 10000)
+        budget_arraylist.add(0, 0)
         budget_arraylist.add(1, 10000)
         budget_arraylist.add(2, 20000)
         budget_arraylist.add(3, 30000)

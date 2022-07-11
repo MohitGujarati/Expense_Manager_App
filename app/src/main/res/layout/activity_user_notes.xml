@@ -6,24 +6,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.User_Notes">
 
+    tools:context=".View.User_Notes">
 
     <TextView
         android:id="@+id/tv_totalExpence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="000"
-        android:layout_marginTop="60dp"
         android:layout_marginLeft="10dp"
         style="@style/TextAppearance.AppCompat.Title"
         android:drawableStart="@drawable/ic_rupee"
         android:textSize="50dp"
-        android:background="@drawable/background"
+        android:background="@drawable/background_layout"
         android:padding="5dp"
         android:textStyle="bold"/>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_Leftcash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_marginBottom="10dp"
         style="@style/TextAppearance.AppCompat.Body2"
         android:layout_weight="1"
-        android:background="@drawable/background"
+        android:background="@drawable/background_layout"
         android:layout_below="@+id/tv_totalExpence"
         android:layout_marginLeft="10dp"
         android:drawableStart="@drawable/ic_rupee"
@@ -42,12 +42,13 @@
 
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_below="@+id/tv_Leftcash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:padding="2dp"
-        android:background="@drawable/background"
+        android:background="@drawable/background_layout"
         android:id="@+id/ll"
         android:orientation="horizontal">
         <Spinner
@@ -118,9 +119,9 @@
             android:id="@+id/viewhistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="4dp"
-            android:background="@drawable/background"
+            android:background="@drawable/background_layout"
             android:padding="5dp"
             android:src="@drawable/ic_history"
             app:layout_constraintEnd_toEndOf="parent"

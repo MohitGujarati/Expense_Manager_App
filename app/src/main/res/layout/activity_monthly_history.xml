@@ -30,7 +30,7 @@
 
 
         <TextView
-            android:id="@+id/tv_amountspend"
+            android:id="@+id/tv_budget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2,000"

@@ -6,14 +6,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".View.User_Notes">
 
+
+
+    <!--this is view page
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:backgroundTint="@color/white" />
+
+    <Button
+        android:id="@+id/start_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:text="Start"
+       android:layout_marginTop="650dp"
+        android:layout_marginLeft="300dp"
+        android:textStyle="bold"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:textSize="20dp"/>
+
+-->
+
+
+
+    <RelativeLayout
+        android:id="@+id/layout_notesmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
     <TextView
+
         android:id="@+id/tv_totalExpence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="000"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
         style="@style/TextAppearance.AppCompat.Title"
         android:drawableStart="@drawable/ic_rupee"
@@ -86,7 +123,7 @@
         android:id="@+id/rec_savednotes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll"
+        android:layout_below="@+id/tv_totalExpence"
         android:layout_marginTop="20dp"
        />
 
@@ -97,6 +134,7 @@
 
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+
             android:id="@+id/btn_addnotes"
             style="@style/Widget.Material3.FloatingActionButton.Large.Tertiary"
             android:layout_width="wrap_content"
@@ -126,6 +164,21 @@
             android:src="@drawable/ic_history"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/background_layout"
+            android:padding="5dp"
+            android:src="@drawable/ic_calculate"
+            app:layout_constraintBottom_toBottomOf="@+id/viewhistory"
+            app:layout_constraintEnd_toStartOf="@+id/viewhistory"
+            app:layout_constraintTop_toTopOf="@+id/viewhistory"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    </RelativeLayout>
 </RelativeLayout>

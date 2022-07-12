@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
 
@@ -22,7 +20,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/background_layout"
                 android:inputType="numberDecimal"
                 android:drawableStart="@drawable/ic_rupee"
                 android:drawablePadding="10dp"
@@ -60,13 +61,13 @@
 
             <TextView
                 android:id="@+id/tv_seletedate"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:drawableStart="@drawable/ic_calendar"
                 android:drawablePadding="10dp"
                 android:padding="10dp"
+                android:background="@drawable/background_layout"
                 android:hint="Select the date"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
@@ -80,6 +81,7 @@
                 android:drawablePadding="10dp"
                 android:hint="Health,car,hotel.."
                 android:padding="10dp"
+                android:background="@drawable/background_layout"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -91,6 +93,7 @@
                 android:drawableStart="@drawable/ic_note"
                 android:drawablePadding="10dp"
                 android:hint="Add Note.."
+                android:background="@drawable/background_layout"
                 android:padding="10dp"
                 android:textSize="15dp"
                 android:textStyle="bold" />
@@ -115,7 +118,4 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.675" />
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

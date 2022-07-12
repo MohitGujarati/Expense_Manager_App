@@ -1,5 +1,6 @@
 package mohit.dev.expensemanager.View
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import mohit.dev.expensemanager.Adpter.MyViewPager_Adapter
 import mohit.dev.expensemanager.Adpter.Mynotes_Adapter
 import mohit.dev.expensemanager.Database.note_database
 import mohit.dev.expensemanager.Model.Notes_ModelClass
@@ -17,11 +20,26 @@ import mohit.dev.expensemanager.R
 
 class User_Notes : AppCompatActivity() {
 
+    private lateinit var viewpage: ViewPager
+    private lateinit var viewPagerAdapter: MyViewPager_Adapter
 
+
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_notes)
 
+        //view pager1
+        /*
+           viewpage = findViewById(R.id.viewpager)
+           var viewPagerAdapter = MyViewPager_Adapter(this)
+           viewpage.adapter = viewPagerAdapter
+
+         */
 
         var currentmonth = findViewById<Spinner>(R.id.id_spinner)
         var totalamount = findViewById<TextView>(R.id.tv_totalExpence)
@@ -30,25 +48,86 @@ class User_Notes : AppCompatActivity() {
         var tv_Leftcash = findViewById<TextView>(R.id.tv_Leftcash)
         var txt_budget = findViewById<TextView>(R.id.txt_budget)
         var viewhistory = findViewById<ImageView>(R.id.viewhistory)
+       // var start_app = findViewById<Button>(R.id.start_app)
+       //var layout_notesmain = findViewById<RelativeLayout>(R.id.layout_notesmain)
+        //View Pager 2
+/*
+        start_app.setOnClickListener {
+
+            layout_notesmain.visibility=View.VISIBLE
+            viewpage.visibility=View.GONE
+            start_app.visibility=View.GONE
+
+
+
+            viewhistory.setOnClickListener {
+                var i = Intent(this, Monthly_History::class.java)
+                startActivity(i)
+
+            }
+            currentmonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+
+
+                    setmonth(position, txt_budget)
+                    amountleft(txt_budget, totalamount, tv_Leftcash)
+
+                    Log.d("spinnerdata","${"$position =" + currentmonth.getItemAtPosition(position)}")
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+            }
+
+            loadrecview(rec_notes)
+
+            loadamount(totalamount)
+
+
+
+            if (txt_budget.text != null && totalamount.text != null) {
+                amountleft(txt_budget, totalamount, tv_Leftcash)
+            } else {
+                Toast.makeText(this, "setting values to zero", Toast.LENGTH_SHORT).show()
+                txt_budget.text == "0" && totalamount.text == "0" && tv_Leftcash.text == "0"
+            }
+
+
+
+            btn_addnotes.setOnClickListener {
+                var i = Intent(this, MainActivity::class.java)
+                startActivity(i)
+            }
+
+        }
+
+ */
+
+
+        var prgarray= ArrayList<Int>()
 
         viewhistory.setOnClickListener {
             var i = Intent(this, Monthly_History::class.java)
             startActivity(i)
-        }
 
+        }
         currentmonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
+            override fun onItemSelected(parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
                 id: Long
             ) {
 
-
                 setmonth(position, txt_budget)
                 amountleft(txt_budget, totalamount, tv_Leftcash)
 
-             Log.d("spinnerdata","${"$position =" + currentmonth.getItemAtPosition(position)}")
+                Log.d("spinnerdata", "${"$position =" + currentmonth.getItemAtPosition(position)}")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -57,12 +136,9 @@ class User_Notes : AppCompatActivity() {
         }
 
 
-//idspinner.getItemAtPosition(position)
+        loadrecview(rec_notes,totalamount,prgarray)
 
-
-        loadrecview(rec_notes)
-
-        loadamount(totalamount)
+        loadamount(totalamount,prgarray)
 
 
 
@@ -79,11 +155,10 @@ class User_Notes : AppCompatActivity() {
             var i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
-
-
     }
 
-    private fun loadamount(totalamount: TextView) {
+
+    private fun loadamount(totalamount: TextView, prgarray: ArrayList<Int>) {
         var db_helper = note_database(this)
 
         var amountlist: MutableList<Int>
@@ -95,16 +170,26 @@ class User_Notes : AppCompatActivity() {
             var amountlistdata = sum + amountlist[i]
             sum = amountlistdata
         }
+
+
         totalamount.text = sum.toString()
         Log.d("amount_list_data", "$amountlist, sum=$sum")
 
+
+        var prg=0
+        for (i in 0..amountlist.size-1){
+             prg =(amountlist.get(i) * 100/sum).toInt()
+            Log.d("progress","$prg")
+           // Log.d("progressarray","$prg")
+            prgarray.add(prg)
+            Log.d("progressarray","$prgarray")
+        }
+
+
     }
 
-    private fun amountleft(
-        txt_budget: TextView,
-        totalamount: TextView,
-        tv_Leftcash: TextView,
-    ) {
+
+    private fun amountleft(txt_budget: TextView, totalamount: TextView, tv_Leftcash: TextView) {
         var intbug = Integer.valueOf(txt_budget.text.toString())
         var inttotal = Integer.valueOf(totalamount.text.toString())
 
@@ -120,15 +205,21 @@ class User_Notes : AppCompatActivity() {
 
     }
 
-    private fun loadrecview(rec_notes: RecyclerView) {
-        rec_notes.layoutManager = LinearLayoutManager(this)
-
+    private fun loadrecview(
+        rec_notes: RecyclerView,
+        totalamount: TextView,
+        prgarray: ArrayList<Int>
+    ) {
         var db_helper = note_database(this)
+        //calculation for progress
+
+
+        rec_notes.layoutManager = LinearLayoutManager(this)
 
         var userlist: MutableList<Notes_ModelClass>
         userlist = db_helper.getall_Note()
 
-        var connect_Adapter = Mynotes_Adapter(this, userlist)
+        var connect_Adapter = Mynotes_Adapter(this, userlist,prgarray)
         rec_notes.adapter = connect_Adapter
 
     }
@@ -201,7 +292,5 @@ class User_Notes : AppCompatActivity() {
             }
         }
 
-
     }
-
 }

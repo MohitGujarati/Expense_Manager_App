@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_Onbording"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/onbording1"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_Onbording"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_Onbording"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:gravity="center"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_margin="10dp"
+        android:text="Hello"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/tv_Onbording_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Onbording"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:gravity="center"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_margin="30dp"
+        android:text="Hello"
+        android:textSize="18dp"/>
+
+</RelativeLayout>

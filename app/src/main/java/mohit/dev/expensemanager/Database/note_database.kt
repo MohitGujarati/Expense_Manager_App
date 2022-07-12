@@ -33,7 +33,7 @@ class note_database(var note_context: Context) :
             (
                     "CREATE TABLE " + note_TABLE_NAME.toString() + " "
                             + " ( " + note_KEY_ID.toString() + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                            + note_KEY_AMOUNT.toString() + " TEXT, " + ""
+                            + note_KEY_AMOUNT.toString() + " INTEGER, " + ""
                             + note_KEY_CATEGORY.toString() + " TEXT,"
                             + note_KEY_NOTES.toString() + " TEXT,"
                             + note_KEY_MONTH.toString() + " INTEGER,"
@@ -164,7 +164,7 @@ class note_database(var note_context: Context) :
     }
 
         var noteid: Int
-        var amount: String
+        var amount: Int
         var date: String
         var category: String
         var note: String
@@ -177,7 +177,7 @@ class note_database(var note_context: Context) :
 
                 do {
                     noteid = cursor.getInt(cursor.getColumnIndex(note_KEY_ID))
-                    amount = cursor.getString(cursor.getColumnIndex(note_KEY_AMOUNT))
+                    amount = cursor.getInt(cursor.getColumnIndex(note_KEY_AMOUNT))
                     category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
                     note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
                     date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
@@ -220,7 +220,7 @@ class note_database(var note_context: Context) :
         }
 
         var noteid: Int
-        var amount: String
+        var amount: Int
         var date: String
         var category: String
         var note: String
@@ -233,7 +233,7 @@ class note_database(var note_context: Context) :
 
                 do {
                     noteid = cursor.getInt(cursor.getColumnIndex(note_KEY_ID))
-                    amount = cursor.getString(cursor.getColumnIndex(note_KEY_AMOUNT))
+                    amount = cursor.getInt(cursor.getColumnIndex(note_KEY_AMOUNT))
                     category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
                     note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
                     date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))

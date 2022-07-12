@@ -37,7 +37,7 @@ class Mynotes_Adapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         var mymodel = Notes_Arraylist[position]
-        holder.tvamount.text = mymodel.user_amount
+        holder.tvamount.text = mymodel.user_amount.toString()
         holder.tvcategory.text = mymodel.user_category
         holder.tvdate.text = mymodel.user_date
         holder.tvnote.text = mymodel.user_note
@@ -56,7 +56,7 @@ class Mynotes_Adapter(
 
             Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show()
             var id_delete =
-                dbhelper.note_delete(Notes_ModelClass(mymodel.noteid, "", "", "", "", 0))
+                dbhelper.note_delete(Notes_ModelClass(mymodel.noteid, 0, "", "", "", 0))
             var i = Intent(context, User_Notes::class.java)
             context.startActivity(i)
         }

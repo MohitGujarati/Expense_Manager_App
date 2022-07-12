@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
+    android:layout_marginLeft="4dp"
     android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginRight="4dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -26,7 +26,6 @@
                 android:id="@+id/imageview"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-
                 android:clipToOutline="true"
                 android:padding="10dp"
 
@@ -50,7 +49,7 @@
                 android:hint="amount"
                 android:text="category"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
 
 
@@ -59,11 +58,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tv_cat"
-                android:drawableStart="@drawable/ic_rupee_dark"
+                android:drawableStart="@drawable/ic_rupee_small"
                 android:hint="amount"
                 android:text="Amount"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -76,7 +75,7 @@
                 android:hint="amount"
                 android:text="note"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
 
 
@@ -91,7 +90,7 @@
                 android:text="date"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
 
 
@@ -103,13 +102,14 @@
         android:id="@+id/progress_horizontal"
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="6dp"
         android:layout_below="@+id/gridview"
-        android:background="@drawable/start_background"
+        android:background="@drawable/background_progressbar"
         android:layout_marginLeft="69dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginRight="55dp"
-        android:progressBackgroundTint="@color/purple_200"
+        android:layout_marginTop="-16dp"
+        android:layout_marginRight="35dp"
+        android:progress="70"
+        android:progressBackgroundTint="#07BB86FC"
         android:max="100"
         android:progressTint="#E0F3FF"
 

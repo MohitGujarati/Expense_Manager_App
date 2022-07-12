@@ -138,8 +138,6 @@ class Monthly_History : AppCompatActivity() {
 
     }
 
-
-
     private fun loadhistrory(
         history_month: Int,
         rechistory: RecyclerView,

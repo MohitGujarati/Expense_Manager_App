@@ -2,7 +2,10 @@ package mohit.dev.expensemanager.View
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -16,15 +19,14 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import mohit.de.Category_DatabaseHelper
 import mohit.dev.expensemanager.Adpter.Mycategory_Adapter
 import mohit.dev.expensemanager.Database.note_database
-import mohit.dev.expensemanager.Model.Notes_ModelClass
 import mohit.dev.expensemanager.Model.Category_ModelClass
+import mohit.dev.expensemanager.Model.Notes_ModelClass
 import mohit.dev.expensemanager.R
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
 
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         var month = Todaydate.get(Calendar.MONTH)
         var day = Todaydate.get(Calendar.DAY_OF_MONTH)
 
-        var set_month=0
+        var set_month = 0
         tv_date.setOnClickListener {
             var datepickerobx =
                 DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, d ->
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_done.setOnClickListener {
 
-            var amount = ed_amount.text.toString()
+            var amount = Integer.valueOf(ed_amount.text.toString())
             var category = ed_categoryname.text.toString()
             var note = ed_note.text.toString()
             var date = tv_date.text.toString()
@@ -68,36 +70,42 @@ class MainActivity : AppCompatActivity() {
 
             var passamount = ed_amount.text
 
+            if (amount == 0) {
+                Toast.makeText(this, "Enter Amount", Toast.LENGTH_SHORT).show()
+            } else {
 
                 var id = dbhelper.note_insertdata(
                     Notes_ModelClass(
                         it.id,
-                        "$amount", "$category", "$note", "$date",set_month
+                        amount, "$category", "$note", "$date", set_month
                     )
                 )
 
 
-            var i = Intent(this, User_Notes::class.java)
-           // Log.d("notesimpdata", "$id \"$amount\" and final amount is")
-            i.putExtra("passed",Integer.valueOf(amount))
-           // Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
-            startActivity(i)
+                var i = Intent(this, User_Notes::class.java)
+                // Log.d("notesimpdata", "$id \"$amount\" and final amount is")
+                i.putExtra("passed", Integer.valueOf(amount))
+                // Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
+                startActivity(i)
 
-            Log.d("dates", date)
+                Log.d("dates", date)
+
+            }
 
         }
-
-
-
-
-
         //setting onclick recview data
 
-        var categoryname = getIntent().getStringExtra("categoryname")
-        if (categoryname == null) {
-            ed_categoryname.setText("Enter the category")
-        } else
-            ed_categoryname.setText(categoryname.toString())
+        val custom_pref = "userdata"
+        val sharedPreferences: SharedPreferences =
+            this.getSharedPreferences(custom_pref, Context.MODE_PRIVATE)
+
+
+        var shared_value = sharedPreferences.getString("Key_email", "default")
+        var editor = sharedPreferences.edit()
+        editor.clear()
+        editor.commit()
+        ed_categoryname.setText(shared_value)
+        //  ed_categoryname.setText(categoryname.toString())
 
         //recview
         load_category(rec_cat)
@@ -107,6 +115,7 @@ class MainActivity : AppCompatActivity() {
 
             var d = Dialog(this)
             d.setContentView(R.layout.mydialog)
+            d.window?.setBackgroundDrawable(ColorDrawable(0))
             d.setCancelable(true)
 
             var dialog_categoryname = d.findViewById<EditText>(R.id.ed_categoryName)
@@ -114,7 +123,12 @@ class MainActivity : AppCompatActivity() {
             var dbhelper = Category_DatabaseHelper(this)
 
             btn_savecategory.setOnClickListener {
-                var id = dbhelper.insertData(Category_ModelClass(it.id, dialog_categoryname.text.toString()))
+                var id = dbhelper.insertData(
+                    Category_ModelClass(
+                        it.id,
+                        dialog_categoryname.text.toString()
+                    )
+                )
                 if (id > 0) {
                     var intent = Intent(this, MainActivity::class.java)
                     //   Toast.makeText(this, "saved at $id", Toast.LENGTH_SHORT).show()
@@ -129,9 +143,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        //take date from recview
-
-
+        //clear catch data
 
 
     }

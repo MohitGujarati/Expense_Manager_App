@@ -20,143 +20,37 @@ import mohit.dev.expensemanager.R
 
 class User_Notes : AppCompatActivity() {
 
-    private lateinit var viewpage: ViewPager
-    private lateinit var viewPagerAdapter: MyViewPager_Adapter
-
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_notes)
 
-        //view pager1
-        /*
-           viewpage = findViewById(R.id.viewpager)
-           var viewPagerAdapter = MyViewPager_Adapter(this)
-           viewpage.adapter = viewPagerAdapter
-
-         */
-
-        var currentmonth = findViewById<Spinner>(R.id.id_spinner)
         var totalamount = findViewById<TextView>(R.id.tv_totalExpence)
         var btn_addnotes = findViewById<ExtendedFloatingActionButton>(R.id.btn_addnotes)
         var rec_notes = findViewById<RecyclerView>(R.id.rec_savednotes)
-        var tv_Leftcash = findViewById<TextView>(R.id.tv_Leftcash)
-        var txt_budget = findViewById<TextView>(R.id.txt_budget)
+
         var viewhistory = findViewById<ImageView>(R.id.viewhistory)
-       // var start_app = findViewById<Button>(R.id.start_app)
-       //var layout_notesmain = findViewById<RelativeLayout>(R.id.layout_notesmain)
-        //View Pager 2
-/*
-        start_app.setOnClickListener {
-
-            layout_notesmain.visibility=View.VISIBLE
-            viewpage.visibility=View.GONE
-            start_app.visibility=View.GONE
-
-
-
-            viewhistory.setOnClickListener {
-                var i = Intent(this, Monthly_History::class.java)
-                startActivity(i)
-
-            }
-            currentmonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-
-                    setmonth(position, txt_budget)
-                    amountleft(txt_budget, totalamount, tv_Leftcash)
-
-                    Log.d("spinnerdata","${"$position =" + currentmonth.getItemAtPosition(position)}")
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                }
-
-            }
-
-            loadrecview(rec_notes)
-
-            loadamount(totalamount)
-
-
-
-            if (txt_budget.text != null && totalamount.text != null) {
-                amountleft(txt_budget, totalamount, tv_Leftcash)
-            } else {
-                Toast.makeText(this, "setting values to zero", Toast.LENGTH_SHORT).show()
-                txt_budget.text == "0" && totalamount.text == "0" && tv_Leftcash.text == "0"
-            }
-
-
-
-            btn_addnotes.setOnClickListener {
-                var i = Intent(this, MainActivity::class.java)
-                startActivity(i)
-            }
-
-        }
-
- */
-
+        var btn_budget = findViewById<ImageView>(R.id.btn_budget)
 
         var prgarray= ArrayList<Int>()
+
 
         viewhistory.setOnClickListener {
             var i = Intent(this, Monthly_History::class.java)
             startActivity(i)
 
         }
-        currentmonth.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-                setmonth(position, txt_budget)
-                amountleft(txt_budget, totalamount, tv_Leftcash)
-
-                Log.d("spinnerdata", "${"$position =" + currentmonth.getItemAtPosition(position)}")
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-        }
-
 
         loadrecview(rec_notes,totalamount,prgarray)
 
         loadamount(totalamount,prgarray)
-
-
-
-        if (txt_budget.text != null && totalamount.text != null) {
-            amountleft(txt_budget, totalamount, tv_Leftcash)
-        } else {
-            Toast.makeText(this, "setting values to zero", Toast.LENGTH_SHORT).show()
-            txt_budget.text == "0" && totalamount.text == "0" && tv_Leftcash.text == "0"
-        }
-
-
-
         btn_addnotes.setOnClickListener {
             var i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
     }
-
 
     private fun loadamount(totalamount: TextView, prgarray: ArrayList<Int>) {
         var db_helper = note_database(this)
@@ -183,23 +77,6 @@ class User_Notes : AppCompatActivity() {
            // Log.d("progressarray","$prg")
             prgarray.add(prg)
             Log.d("progressarray","$prgarray")
-        }
-
-
-    }
-
-
-    private fun amountleft(txt_budget: TextView, totalamount: TextView, tv_Leftcash: TextView) {
-        var intbug = Integer.valueOf(txt_budget.text.toString())
-        var inttotal = Integer.valueOf(totalamount.text.toString())
-
-        var intleft = (intbug - inttotal)
-        tv_Leftcash.setTextColor(ContextCompat.getColor(this, R.color.green));
-        tv_Leftcash.text = (intbug - inttotal).toString() + "/-left"
-
-        if (intleft <= 0) {
-            tv_Leftcash.text = (intbug - inttotal).toString() + "/- debt"
-            tv_Leftcash.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
 
 

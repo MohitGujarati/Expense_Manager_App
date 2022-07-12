@@ -3,7 +3,7 @@ package mohit.dev.expensemanager.Adpter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +16,11 @@ import mohit.de.Category_DatabaseHelper
 import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.R
 import mohit.dev.expensemanager.View.MainActivity
-import kotlin.random.Random
 
-class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Category_ModelClass>) :
+class Mycategory_Adapter(
+    var context: Context,
+    var cat_Arraylist: MutableList<Category_ModelClass>
+) :
     RecyclerView.Adapter<Mycategory_Adapter.ViewHolder>() {
 
 
@@ -38,18 +40,41 @@ class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Ca
         holder.title.text = mymodel.userCategory
 
 
+        val custom_pref = "userdata"
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences(custom_pref, Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor = sharedPreferences.edit()
+
+        var result = sharedPreferences.getBoolean("key_status", false)
+
+        if (result == true) {
+
+            var i = Intent(context, MainActivity::class.java)
+            context.startActivity(i)
+        }
 
         var onclick = true
-
         holder.categorylayout.setOnClickListener {
+
+
             if (onclick == true) {
                 holder.categorylayout.setBackgroundColor(context.getColor(R.color.purple_200))
-                val passdata = Intent(context, MainActivity::class.java)
-                passdata.putExtra("categoryname", mymodel.userCategory)
-                context.startActivity(passdata)
+
+//                val passdata = Intent(context, MainActivity::class.java)
+//                passdata.putExtra("categoryname", mymodel.userCategory)
+//                context.startActivity(passdata)
+
+                editor.putString("Key_email", mymodel.userCategory.toString())
+                editor.putBoolean("key_status", true)
+                editor.apply()
+                editor.commit()
+
+                var i = Intent(context, MainActivity::class.java)
+                context.startActivity(i)
+
                 onclick = false
             } else {
-                holder.categorylayout.setBackgroundColor(context.getColor(R.color.grey))
+                holder.categorylayout.setBackgroundDrawable(context.getDrawable(R.drawable.background_category))
                 onclick = true
             }
 
@@ -59,6 +84,7 @@ class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Ca
             var dbhelper = Category_DatabaseHelper(context)
             Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show()
             var id_delete = dbhelper.delete(Category_ModelClass(mymodel.userid, ""))
+
             var k = Intent(context, MainActivity::class.java)
             context.startActivity(k)
         }

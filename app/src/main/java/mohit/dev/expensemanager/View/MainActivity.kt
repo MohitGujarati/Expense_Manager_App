@@ -104,7 +104,8 @@ class MainActivity : AppCompatActivity() {
             this.getSharedPreferences(custom_pref, Context.MODE_PRIVATE)
 
 
-        var shared_value = sharedPreferences.getString("Key_email", "default")
+        var txt=ed_categoryname.setHint("Type Of Expen"+"$"+"e")
+        var shared_value = sharedPreferences.getString("Key_email", "")
         var editor = sharedPreferences.edit()
         editor.clear()
         editor.commit()

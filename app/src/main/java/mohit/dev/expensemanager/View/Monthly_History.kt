@@ -237,7 +237,8 @@ class Monthly_History : AppCompatActivity() {
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         overridePendingTransition(0,0)
-        startActivity(i)
         finish()
+        startActivity(i)
+
     }
 }

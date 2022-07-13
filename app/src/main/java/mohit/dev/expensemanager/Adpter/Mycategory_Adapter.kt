@@ -34,8 +34,6 @@ class Mycategory_Adapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         var mymodel = cat_Arraylist[position]
-
-
         // holder.img.setImageResource(mymodel.img)
         holder.title.text = mymodel.userCategory
 
@@ -73,6 +71,8 @@ class Mycategory_Adapter(
                 editor.commit()
 
                 var i = Intent(context, MainActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i)
 
                 onclick = false

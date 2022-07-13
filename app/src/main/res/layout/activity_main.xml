@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_mainlayout"
     android:orientation="vertical">
 
 
@@ -107,6 +108,7 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="30dp"
                 android:backgroundTint="#43A047"
                 android:text="Done"
                 android:textColor="@color/white"
@@ -116,6 +118,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.675" />
+                app:layout_constraintVertical_bias="0.675"
+                />
         </LinearLayout>
 </androidx.core.widget.NestedScrollView>

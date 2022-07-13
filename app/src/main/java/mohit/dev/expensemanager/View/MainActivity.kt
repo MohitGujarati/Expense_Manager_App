@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         var btn_done = findViewById<ExtendedFloatingActionButton>(R.id.btn_done)
 
 
+
         //date
         var Todaydate = Calendar.getInstance()
         var year = Todaydate.get(Calendar.YEAR)
@@ -85,6 +86,9 @@ class MainActivity : AppCompatActivity() {
                 var i = Intent(this, User_Notes::class.java)
                 // Log.d("notesimpdata", "$id \"$amount\" and final amount is")
                 i.putExtra("passed", Integer.valueOf(amount))
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                overridePendingTransition(0,0)
                 // Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
                 startActivity(i)
 
@@ -161,6 +165,16 @@ class MainActivity : AppCompatActivity() {
         var connect_Adapter = Mycategory_Adapter(this, userlist)
         recCat.adapter = connect_Adapter
 
+    }
+
+    override fun onBackPressed() {
+        var i =Intent(this,User_Notes::class.java)
+
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i)
+        overridePendingTransition(0,0)
+        finish()
     }
 
 }

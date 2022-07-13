@@ -4,19 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import mohit.dev.expensemanager.Adpter.MyViewPager_Adapter
 import mohit.dev.expensemanager.Adpter.Mynotes_Adapter
 import mohit.dev.expensemanager.Database.note_database
 import mohit.dev.expensemanager.Model.Notes_ModelClass
 import mohit.dev.expensemanager.R
+
 
 class User_Notes : AppCompatActivity() {
 
@@ -34,7 +32,16 @@ class User_Notes : AppCompatActivity() {
         var viewhistory = findViewById<ImageView>(R.id.viewhistory)
         var btn_budget = findViewById<ImageView>(R.id.btn_budget)
 
-        var prgarray= ArrayList<Int>()
+
+        var fragmentManager = supportFragmentManager
+        var fragmentTransaction = fragmentManager.beginTransaction()
+        var fragment1 = loadcategorydata()
+        btn_budget.setOnClickListener {
+
+            fragmentTransaction.add(R.id.container_main, fragment1).commit()
+        }
+
+        var prgarray = ArrayList<Int>()
 
 
         viewhistory.setOnClickListener {
@@ -43,9 +50,9 @@ class User_Notes : AppCompatActivity() {
 
         }
 
-        loadrecview(rec_notes,totalamount,prgarray)
+        loadrecview(rec_notes, totalamount, prgarray)
 
-        loadamount(totalamount,prgarray)
+        loadamount(totalamount, prgarray)
         btn_addnotes.setOnClickListener {
             var i = Intent(this, MainActivity::class.java)
             startActivity(i)
@@ -70,13 +77,13 @@ class User_Notes : AppCompatActivity() {
         Log.d("amount_list_data", "$amountlist, sum=$sum")
 
 
-        var prg=0
-        for (i in 0..amountlist.size-1){
-             prg =(amountlist.get(i) * 100/sum).toInt()
-            Log.d("progress","$prg")
-           // Log.d("progressarray","$prg")
+        var prg = 0
+        for (i in 0..amountlist.size - 1) {
+            prg = (amountlist.get(i) * 100 / sum).toInt()
+            Log.d("progress", "$prg")
+            // Log.d("progressarray","$prg")
             prgarray.add(prg)
-            Log.d("progressarray","$prgarray")
+            Log.d("progressarray", "$prgarray")
         }
 
 
@@ -96,7 +103,7 @@ class User_Notes : AppCompatActivity() {
         var userlist: MutableList<Notes_ModelClass>
         userlist = db_helper.getall_Note()
 
-        var connect_Adapter = Mynotes_Adapter(this, userlist,prgarray)
+        var connect_Adapter = Mynotes_Adapter(this, userlist, prgarray)
         rec_notes.adapter = connect_Adapter
 
     }
@@ -170,4 +177,14 @@ class User_Notes : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+        finish();
+
+
+    }
+
+
 }

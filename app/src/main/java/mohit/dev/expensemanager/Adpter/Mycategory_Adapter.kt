@@ -50,6 +50,9 @@ class Mycategory_Adapter(
         if (result == true) {
 
             var i = Intent(context, MainActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
             context.startActivity(i)
         }
 
@@ -86,6 +89,8 @@ class Mycategory_Adapter(
             var id_delete = dbhelper.delete(Category_ModelClass(mymodel.userid, ""))
 
             var k = Intent(context, MainActivity::class.java)
+            k.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            k.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(k)
         }
 

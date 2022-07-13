@@ -1,5 +1,6 @@
 package mohit.dev.expensemanager.View
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -229,5 +230,14 @@ class Monthly_History : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onBackPressed() {
+        var i = Intent(this,User_Notes::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        overridePendingTransition(0,0)
+        startActivity(i)
+        finish()
     }
 }

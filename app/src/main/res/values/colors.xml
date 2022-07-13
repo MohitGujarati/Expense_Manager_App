@@ -10,4 +10,6 @@
     <color name="grey">#6ABDBDBD</color>
     <color name="red">#C60404</color>
     <color name="green">#03AC09</color>
+    <color name="calender">#8bc6ec</color>
+
 </resources>

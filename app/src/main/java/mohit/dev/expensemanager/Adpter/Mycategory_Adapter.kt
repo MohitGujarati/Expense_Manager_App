@@ -17,10 +17,7 @@ import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.R
 import mohit.dev.expensemanager.View.MainActivity
 
-class Mycategory_Adapter(
-    var context: Context,
-    var cat_Arraylist: MutableList<Category_ModelClass>
-) :
+class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Category_ModelClass>) :
     RecyclerView.Adapter<Mycategory_Adapter.ViewHolder>() {
 
 

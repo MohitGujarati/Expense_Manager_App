@@ -8,6 +8,9 @@ import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import mohit.de.Category_DatabaseHelper
+import mohit.de.Category_DatabaseHelper.Companion.category_KEY_categoryname
+import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.Model.Notes_ModelClass
 
 class note_database(var note_context: Context) :
@@ -250,5 +253,56 @@ class note_database(var note_context: Context) :
 
         return note_userlist
     }
+
+
+    @SuppressLint("Range")
+    fun getvalidcategory(category:String):MutableList<Notes_ModelClass>{
+        var note_userlist:MutableList<Notes_ModelClass> =ArrayList()
+        var query="select * from $note_TABLE_NAME where  $note_KEY_CATEGORY = '$category' order by $note_KEY_ID desc"
+
+        var cursor:Cursor?
+        var note_db=this.readableDatabase
+
+        try {
+            cursor=note_db.rawQuery(query,null)
+        }catch (Exception: SQLException) {
+            note_db.execSQL(query)
+            return ArrayList()
+        }
+
+        var noteid: Int
+        var amount: Int
+        var date: String
+        var category: String
+        var note: String
+        var month:Int
+
+
+
+        if (cursor.count > 0) {
+            if (cursor.moveToFirst()) {
+
+                do {
+                    noteid = cursor.getInt(cursor.getColumnIndex(note_KEY_ID))
+                    amount = cursor.getInt(cursor.getColumnIndex(note_KEY_AMOUNT))
+                    category = cursor.getString(cursor.getColumnIndex(note_KEY_CATEGORY))
+                    note = cursor.getString(cursor.getColumnIndex(note_KEY_NOTES))
+                    date = cursor.getString(cursor.getColumnIndex(note_KEY_DATE))
+                    month = cursor.getInt(cursor.getColumnIndex(note_KEY_MONTH))
+
+
+                    var userdatas = Notes_ModelClass(noteid,amount,category,note,date,month)
+                    note_userlist.add(userdatas)
+
+
+                } while (cursor.moveToNext())
+            }
+        }
+
+        return note_userlist
+    }
+
+
+
 
 }

@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         editor.clear()
         editor.commit()
         ed_categoryname.setText(shared_value)
-        //  ed_categoryname.setText(categoryname.toString())
+        //ed_categoryname.setText(categoryname.toString())
 
         //recview
         load_category(rec_cat)
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
             d.setCancelable(true)
 
             var dialog_categoryname = d.findViewById<EditText>(R.id.ed_categoryName)
-            var btn_savecategory = d.findViewById<Button>(R.id.btn_Add)
+            var btn_savecategory = d.findViewById<Button>(R.id.btn_add)
             var dbhelper = Category_DatabaseHelper(this)
 
             btn_savecategory.setOnClickListener {
@@ -141,7 +141,6 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
                 }
-
             }
 
             d.show()
@@ -152,8 +151,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
     private fun load_category(recCat: RecyclerView) {
 
         recCat.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
@@ -161,7 +158,7 @@ class MainActivity : AppCompatActivity() {
         var db_helper = Category_DatabaseHelper(this)
 
         var userlist: MutableList<Category_ModelClass>
-        userlist = db_helper.getAllData()
+        userlist = db_helper.getAllCategory_Data()
 
         var connect_Adapter = Mycategory_Adapter(this, userlist)
         recCat.adapter = connect_Adapter

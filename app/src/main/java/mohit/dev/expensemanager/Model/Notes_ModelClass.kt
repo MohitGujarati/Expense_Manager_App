@@ -1,6 +1,6 @@
 package mohit.dev.expensemanager.Model
 
-class Notes_ModelClass(
+open class Notes_ModelClass(
 
     var noteid:Int,
     var user_amount:Int,

@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="mybottom_navbar">
+        <item name="backgroundTint">@color/black</item>
+        <item name="itemIconTint">@color/calender</item>
+        <item name="itemTextColor">@color/white</item>
+    </style>
 </resources>

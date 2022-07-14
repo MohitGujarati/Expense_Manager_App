@@ -20,5 +20,13 @@
     <style name="Theme.ExpenseManager.AppBarOverlay"
         parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.ExpenseManager.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="mybottom_navbar">
+        <item name="backgroundTint">@color/white</item>
+        <item name="itemIconTint">@color/calender</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
+
 </resources>
 

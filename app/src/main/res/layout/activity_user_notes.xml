@@ -1,101 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Home_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/Home_layout"
-    android:visibility="visible"
     android:background="@drawable/background_mainlayout"
+    android:visibility="visible"
     tools:context=".View.User_Notes">
 
+    <TextView
+        android:id="@+id/tv_totalExpence"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/background_layout"
+        android:drawableStart="@drawable/ic_rupee"
+        android:padding="5dp"
+        android:text="000"
+        android:textSize="50dp"
+        android:textStyle="bold" />
 
+    <LinearLayout
+        android:id="@+id/buttonview"
+        android:layout_width="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_totalExpence"
-            style="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_totalExpence">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/show_chip"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
-
-            android:background="@drawable/background_layout"
-            android:drawableStart="@drawable/ic_rupee"
-            android:padding="5dp"
-            android:text="000"
-            android:textSize="50dp"
-            android:textStyle="bold" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rec_savednotes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_below="@+id/tv_totalExpence"
-            android:layout_marginTop="20dp" />
+            android:layout_margin="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#3949AB"
+            android:drawableStart="@drawable/ic_category"
+            android:text="Category's"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_category"
+            app:iconTint="@color/white" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    </LinearLayout>
 
-
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-
-                android:id="@+id/btn_addnotes"
-                style="@style/Widget.Material3.FloatingActionButton.Large.Tertiary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#1E88E5"
-                android:text="Add Notes"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:icon="@drawable/ic_add"
-                app:iconTint="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.895" />
-
-            <ImageView
-                android:id="@+id/viewhistory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/background_layout"
-                android:padding="5dp"
-                android:src="@drawable/ic_history"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/btn_budget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/background_layout"
-                android:padding="5dp"
-                android:src="@drawable/ic_calculate"
-                app:layout_constraintBottom_toBottomOf="@+id/viewhistory"
-                app:layout_constraintEnd_toStartOf="@+id/viewhistory"
-                app:layout_constraintTop_toTopOf="@+id/viewhistory"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <FrameLayout
-        android:id="@+id/container_main"
-        android:visibility="gone"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_Categorychips"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonview"
+        android:visibility="gone"
 
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_showchipdata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rec_Categorychips"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_mainlayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_savednotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rec_showchipdata"
+        android:layout_marginTop="20dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+
+            android:id="@+id/btn_addnotes"
+            style="@style/Widget.Material3.FloatingActionButton.Large.Tertiary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#1E88E5"
+            android:text="Add Notes"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.895" />
+
+        <ImageView
+            android:id="@+id/viewhistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/background_layout"
+            android:padding="5dp"
+            android:src="@drawable/ic_history"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/background_layout"
+            android:padding="5dp"
+            android:src="@drawable/ic_calculate"
+            app:layout_constraintBottom_toBottomOf="@+id/viewhistory"
+            app:layout_constraintEnd_toStartOf="@+id/viewhistory"
+            app:layout_constraintTop_toTopOf="@+id/viewhistory"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </RelativeLayout>

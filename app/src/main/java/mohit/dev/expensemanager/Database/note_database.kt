@@ -304,5 +304,4 @@ class note_database(var note_context: Context) :
 
 
 
-
 }

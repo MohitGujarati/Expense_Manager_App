@@ -8,6 +8,7 @@
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable-v24/background_layout.xml" value="0.1635" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable-v24/background_viewpager.xml" value="0.1635" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable/background.xml" value="0.1635" />
+        <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable/background_chip.xml" value="0.148" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable/background_chips.xml" value="0.1" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable/background_imageview.xml" value="0.1635" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable/background_layout.xml" value="0.1635" />
@@ -22,7 +23,7 @@
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/drawable/start_background.xml" value="0.1635" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/activity_monthly_history.xml" value="0.264" />
-        <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/activity_user_notes.xml" value="0.1" />
+        <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/activity_user_notes.xml" value="0.38639876352395675" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/dialog_Exit.xml" value="0.536" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/dialog_appexit.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/dialog_exit.xml" value="0.2864583333333333" />
@@ -35,7 +36,7 @@
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/introslider.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/layout_category.xml" value="0.4" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/layout_frag_category.xml" value="0.27025641025641023" />
-        <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/layout_frag_chip.xml" value="0.264" />
+        <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/layout_frag_chip.xml" value="0.6434108527131783" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/layout_history.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/layout_notes.xml" value="0.264" />
         <entry key="..\:/All android 2022-2023/ExpenseManager/app/src/main/res/layout/mydialog.xml" value="0.26342710997442453" />

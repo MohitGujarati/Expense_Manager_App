@@ -44,8 +44,6 @@ class Monthly_History : AppCompatActivity() {
             ) {
 
                 monthpos = position
-
-
                 setmonth(position, tv_monthbudget)
 
                 //  amountleft(txt_budget, totalamount, tv_Leftcash)
@@ -147,9 +145,6 @@ class Monthly_History : AppCompatActivity() {
         rechistory.layoutManager = LinearLayoutManager(this)
 
         var db_helper = note_database(this)
-
-
-
 
         var userlist: MutableList<Notes_ModelClass>
         userlist = db_helper.getmonth(history_month)

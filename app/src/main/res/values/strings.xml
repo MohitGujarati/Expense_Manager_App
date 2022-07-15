@@ -2,6 +2,7 @@
 
     <string-array name="spinner">
 
+        <item>month</item>
         <item>Jan</item>
         <item>feb</item>
         <item>Mar</item>

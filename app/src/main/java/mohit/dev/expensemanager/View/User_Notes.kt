@@ -1,22 +1,23 @@
 package mohit.dev.expensemanager.View
 
 import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
-import androidx.appcompat.app.AlertDialog
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import mohit.de.Category_DatabaseHelper
+import mohit.dev.expensemanager.Adpter.MyFrag_category_Adapter
 import mohit.dev.expensemanager.Adpter.Mynotes_Adapter
 import mohit.dev.expensemanager.Database.note_database
+import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.Model.Notes_ModelClass
 import mohit.dev.expensemanager.R
 
@@ -37,23 +38,38 @@ class User_Notes : AppCompatActivity() {
 
         var viewhistory = findViewById<ImageView>(R.id.viewhistory)
         var btn_budget = findViewById<ImageView>(R.id.btn_budget)
-        var Home_layout=findViewById<RelativeLayout>(R.id.Home_layout)
+        var rec_chips = findViewById<RecyclerView>(R.id.rec_Categorychips)
+        var rec_chip_list = findViewById<RecyclerView>(R.id.rec_showchipdata)
+        var show_chip = findViewById<Button>(R.id.show_chip)
 
 
-        var fragmentManager = supportFragmentManager
-        var fragmentTransaction = fragmentManager.beginTransaction()
-        var fragment1 = Frag_categorylist()
-        var frglayout=findViewById<FrameLayout>(R.id.container_main)
+        var chip_clicked = true
+        var prgarray = ArrayList<Int>()
+        loadrecview(rec_notes, totalamount, prgarray)
+        loadamount(totalamount, prgarray)
 
-        btn_budget.setOnClickListener {
-                frglayout.visibility= View.VISIBLE
-                fragmentTransaction.add(R.id.container_main, fragment1).commit()
+        var msg = intent.getStringExtra("chiptext")
+        show_chip.setOnClickListener {
+            if (chip_clicked == true) {
+                rec_chips.visibility = View.VISIBLE
 
+                load_category_chips(rec_chips)
+                chip_clicked = false
+            } else if (chip_clicked == false) {
+                rec_chips.visibility = View.GONE
+                chip_clicked = true
+            }
+        }
 
+        if (msg != null) {
+            rec_chip_list.visibility = View.VISIBLE
+            var txtchip = msg.toString()
+            load_category_notes(rec_chip_list, txtchip, prgarray)
+        } else {
+            rec_chip_list.visibility = View.GONE
         }
 
 
-        var prgarray = ArrayList<Int>()
 
 
         viewhistory.setOnClickListener {
@@ -61,17 +77,54 @@ class User_Notes : AppCompatActivity() {
             startActivity(i)
 
         }
-
-        loadrecview(rec_notes, totalamount, prgarray)
-
-        loadamount(totalamount, prgarray)
         btn_addnotes.setOnClickListener {
             var i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
     }
 
-    private fun loadamount(totalamount: TextView, prgarray: ArrayList<Int>) {
+
+    private fun load_category_notes(
+        recCat: RecyclerView,
+        txtchip: String,
+        prgarray: ArrayList<Int>,
+
+    ) {
+        Log.d("prgdata","$prgarray")
+
+        recCat.layoutManager = LinearLayoutManager(this)
+        var db_helper = note_database(this)
+
+        var userlist: MutableList<Notes_ModelClass>
+        userlist = db_helper.getvalidcategory("$txtchip")
+
+        var connect_Adapter = Mynotes_Adapter(this, userlist,prgarray)
+        recCat.adapter = connect_Adapter
+
+
+
+    }
+
+    private fun load_category_chips(
+        recCat: RecyclerView
+    ) {
+
+        recCat.layoutManager = GridLayoutManager(this, 5, GridLayoutManager.VERTICAL, false)
+
+        var db_helper = Category_DatabaseHelper(this)
+
+        var userlist: MutableList<Category_ModelClass>
+        userlist = db_helper.getAllCategory_Data()
+
+        var connect_Adapter = MyFrag_category_Adapter(this, userlist)
+        recCat.adapter = connect_Adapter
+
+    }
+
+    private fun loadamount(
+        totalamount: TextView,
+        prgarray: ArrayList<Int>
+    ) {
         var db_helper = note_database(this)
 
         var amountlist: MutableList<Int>
@@ -108,8 +161,6 @@ class User_Notes : AppCompatActivity() {
     ) {
         var db_helper = note_database(this)
         //calculation for progress
-
-
         rec_notes.layoutManager = LinearLayoutManager(this)
 
         var userlist: MutableList<Notes_ModelClass>
@@ -120,7 +171,10 @@ class User_Notes : AppCompatActivity() {
 
     }
 
-    private fun setmonth(month: Int, txt_budget: TextView) {
+    private fun setmonth(
+        month: Int,
+        txt_budget: TextView
+    ) {
 
         var budget_arraylist = arrayListOf<Int>()
         budget_arraylist.add(0, 10000)
@@ -189,32 +243,34 @@ class User_Notes : AppCompatActivity() {
         }
 
     }
+/*
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        var builder = AlertDialog.Builder(this)
+            .setTitle("Alert")
+            .setMessage("Are you sure you want to exit")
+            .setPositiveButton("yes", DialogInterface.OnClickListener { dialog, which ->
+                Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show()
+                finish()
+                //     dialog.dismiss()
+            })
+            .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+                Toast.makeText(this, "No", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            })
 
-        override fun onBackPressed() {
-            //super.onBackPressed()
-            var builder = AlertDialog.Builder(this)
-                .setTitle("Alert")
-                .setMessage("Are you sure you want to exit")
-                .setPositiveButton("yes", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show()
-                    finish()
-                    //     dialog.dismiss()
-                })
-                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "No", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                })
+            .setNeutralButton(" Goto My Task's", DialogInterface.OnClickListener { dialog, which ->
+                var i = Intent(this, User_Notes::class.java)
+                Toast.makeText(this, "My Task", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                startActivity(i)
+            })
+            .setCancelable(false)
 
-                .setNeutralButton(" Goto My Task's", DialogInterface.OnClickListener { dialog, which ->
-                    var i =Intent(this,User_Notes::class.java)
-                    Toast.makeText(this, "My Task", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                    startActivity(i)
-                })
-                .setCancelable(false)
+        builder.show()
+    }
 
-            builder.show()
-        }
+ */
 
 
 }

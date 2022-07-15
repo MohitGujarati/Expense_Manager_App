@@ -70,7 +70,6 @@ class note_database(var note_context: Context) :
 
     }
 
-
     @SuppressLint("Range")
     fun getamount():MutableList<Int> {
 
@@ -110,7 +109,6 @@ class note_database(var note_context: Context) :
 
     } @SuppressLint("Range")
 
-
     fun getfilteramount(month: Int):MutableList<Int> {
 
         var amount_list:MutableList<Int> =ArrayList()
@@ -148,7 +146,6 @@ class note_database(var note_context: Context) :
         return amount_list
 
     }
-
 
     @SuppressLint("Range")
     fun getall_Note():MutableList<Notes_ModelClass>{
@@ -253,7 +250,6 @@ class note_database(var note_context: Context) :
 
         return note_userlist
     }
-
 
     @SuppressLint("Range")
     fun getvalidcategory(category:String):MutableList<Notes_ModelClass>{

@@ -73,7 +73,6 @@ class Monthly_History : AppCompatActivity() {
                     Toast.makeText(this, "setting values to zero", Toast.LENGTH_SHORT).show()
                     tv_monthbudget.text == "0" && tv_HistoryExpence.text == "0" && tv_historyLeftcash.text == "0"
                 }
-
                 onclick = false
             } else if (onclick == false) {
                 iv_arrow.setImageResource(R.drawable.ic_arrow_down)

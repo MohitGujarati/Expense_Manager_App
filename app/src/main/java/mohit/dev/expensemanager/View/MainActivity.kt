@@ -142,7 +142,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
                 }
             }
-
             d.show()
 
         }

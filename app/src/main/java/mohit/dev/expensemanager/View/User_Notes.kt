@@ -155,6 +155,7 @@ class User_Notes : AppCompatActivity() {
         tv_txtper.visibility = View.VISIBLE
         tv_txtper.text = " $txtchip consists $prgper % of your Total Expense "
         btn_GoHome.visibility = View.VISIBLE
+        btn_addnotes.visibility = View.GONE
 
         gohome = true
 

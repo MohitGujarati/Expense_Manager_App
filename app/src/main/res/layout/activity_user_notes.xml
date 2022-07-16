@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_totalExpence">
 
@@ -49,6 +50,24 @@
             app:icon="@drawable/ic_category"
             app:iconTint="@color/white" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_GoHome"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_totalExpence"
+            android:layout_margin="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#3949AB"
+            android:text="All category's"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:icon="@drawable/ic_note"
+            app:iconTint="@color/white" />
+
 
     </LinearLayout>
 
@@ -58,6 +77,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonview"
         android:visibility="gone"
+        />
+
+
+    <ProgressBar
+        android:id="@+id/new_pgbar"
+        android:layout_below="@+id/rec_Categorychips"
+        style="@style/CircularDeterminateProgressBar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:indeterminateOnly="false"
+        android:progress="80"
+        android:layout_marginLeft="100dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:progressDrawable="@drawable/background_cricular_progressbar"
+        android:rotation="90"/>
+
+        <TextView
+            android:id="@+id/tv_txtper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/new_pgbar"
+            android:background="@drawable/background_layout"
+            android:textSize="15dp"
+            android:text="hello"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:gravity="center"
+            android:visibility="gone"
+            style="@style/TextAppearance.AppCompat.Body2"
+
 
         />
 
@@ -65,7 +115,7 @@
         android:id="@+id/rec_showchipdata"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rec_Categorychips"
+        android:layout_below="@+id/tv_txtper"
         android:layout_marginTop="20dp"
         android:background="@drawable/background_mainlayout" />
 

@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.convertTo
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -68,17 +69,15 @@ class MainActivity : AppCompatActivity() {
             var note = ed_note.text.toString()
             var date = tv_date.text.toString()
 
-
-            var passamount = ed_amount.text
-
+            var passamount = amount.toInt()
             if (amount == 0) {
-                Toast.makeText(this, "Enter Amount", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Enter Amount in integer", Toast.LENGTH_SHORT).show()
             } else {
 
                 var id = dbhelper.note_insertdata(
                     Notes_ModelClass(
                         it.id,
-                        amount, "$category", "$note", "$date", set_month
+                        amount.toInt(), "$category", "$note", "$date", set_month
                     )
                 )
 

@@ -67,10 +67,12 @@ class User_Notes : AppCompatActivity() {
         var msg = intent.getStringExtra("chiptext")
         show_chip.setOnClickListener {
             if (chip_clicked == true) {
+                show_chip.setIconResource(R.drawable.ic_arrow_down)
                 rec_chips.visibility = View.VISIBLE
                 load_category_chips(rec_chips)
                 chip_clicked = false
             } else if (chip_clicked == false) {
+                show_chip.setIconResource(R.drawable.ic_category)
                 rec_chips.visibility = View.GONE
                 chip_clicked = true
             }
@@ -92,10 +94,6 @@ class User_Notes : AppCompatActivity() {
         } else {
             rec_chip_list.visibility = View.GONE
         }
-
-
-
-
         viewhistory.setOnClickListener {
             var i = Intent(this, Monthly_History::class.java)
             startActivity(i)
@@ -243,8 +241,10 @@ class User_Notes : AppCompatActivity() {
                 .setMessage("Are you sure you want to exit")
                 .setPositiveButton("yes", DialogInterface.OnClickListener { dialog, which ->
                     Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show()
-                    super.onBackPressed()
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    finishAffinity();
                     finish()
+                    super.onBackPressed()
                     dialog.dismiss()
                 })
                 .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->

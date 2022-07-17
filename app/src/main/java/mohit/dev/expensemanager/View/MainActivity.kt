@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         tv_addcategory.setOnClickListener {
 
             var d = Dialog(this)
-            d.setContentView(R.layout.mydialog)
+            d.setContentView(R.layout.dialog_category)
             d.window?.setBackgroundDrawable(ColorDrawable(0))
             d.setCancelable(true)
 

@@ -60,7 +60,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:backgroundTint="#3949AB"
-            android:text="All category's"
+            android:text="All Expense "
             android:textColor="@color/white"
             android:textSize="12dp"
             android:textStyle="bold"

@@ -7,6 +7,8 @@
     android:layout_marginTop="10dp"
     android:background="@drawable/background_mainlayout"
     tools:context=".View.Monthly_History">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,6 +81,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll"
         android:padding="10dp" />
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+
+        android:id="@+id/btn_addbudget"
+        style="@style/Widget.Material3.FloatingActionButton.Large.Tertiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="605dp"
+        android:backgroundTint="#D81B31"
+        android:text=" Add Budget"
+        app:iconPadding="-2dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_add"
+        app:iconTint="@color/white"
+        />
 
 
 </RelativeLayout>

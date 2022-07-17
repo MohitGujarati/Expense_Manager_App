@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/background_mainlayout"
+    android:clipToOutline="true"
+
+    android:elevation="20dp"
+    android:padding="10dp"
+    app:cardCornerRadius="20dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+
+        android:layout_margin="10dp">
+
+
+        <GridLayout
+            android:id="@+id/gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_mainlayout"
+            android:columnCount="2">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="January"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_jan"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="February"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_feb"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="March"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_march"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="April"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_april"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="May"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_may"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="June"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_jane"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="July"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_july"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="August"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_aug"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="September"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_sep"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="October"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_oct"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="November"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_nov"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_layout"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="December"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/amt_dec"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/background_layout"
+                android:drawableStart="@drawable/ic_rupee"
+                android:gravity="start"
+                android:hint="Amount"
+                android:padding="5dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </GridLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gridview"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp">
+
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_save"
+                style="@style/Widget.Material3.FloatingActionButton.Large.Tertiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#3949AB"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

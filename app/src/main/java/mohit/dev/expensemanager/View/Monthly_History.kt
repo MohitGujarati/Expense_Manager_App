@@ -1,6 +1,8 @@
 package mohit.dev.expensemanager.View
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import mohit.dev.expensemanager.Adpter.Mynotes_Adapter
 import mohit.dev.expensemanager.Database.note_database
 import mohit.dev.expensemanager.Model.Notes_ModelClass
@@ -30,9 +33,11 @@ class Monthly_History : AppCompatActivity() {
 
         var tv_HistoryExpence = findViewById<TextView>(R.id.tv_HistoryExpence)
         var tv_historyLeftcash = findViewById<TextView>(R.id.tv_historyLeftcash)
+        var btn_addbudget=findViewById<ExtendedFloatingActionButton>(R.id.btn_addbudget)
 
 
         var history_prgarray= ArrayList<Int>()
+        var budget_amount=ArrayList<Int>()
 
         var monthpos = 0
         sp_history.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -44,7 +49,14 @@ class Monthly_History : AppCompatActivity() {
             ) {
 
                 monthpos = position
-                setmonth(position, tv_monthbudget)
+                if (budget_amount.isEmpty()==false){
+                    setmonth(position, tv_monthbudget,budget_amount)
+                }else{
+                    for (i in 0..15){
+                        budget_amount.add(i,10)
+                    }
+                }
+
 
                 //  amountleft(txt_budget, totalamount, tv_Leftcash)
 
@@ -56,6 +68,53 @@ class Monthly_History : AppCompatActivity() {
 
         }
 
+        btn_addbudget.setOnClickListener {
+            var d = Dialog(this)
+            d.setContentView(R.layout.dialog_budget)
+            d.window?.setBackgroundDrawable(ColorDrawable(0))
+            d.setCancelable(true)
+
+            var amt_jan=d.findViewById<EditText>(R.id.amt_jan)
+            var amt_feb=d.findViewById<EditText>(R.id.amt_feb)
+            var amt_march=d.findViewById<EditText>(R.id.amt_march)
+            var amt_april=d.findViewById<EditText>(R.id.amt_april)
+            var amt_may=d.findViewById<EditText>(R.id.amt_may)
+            var amt_june=d.findViewById<EditText>(R.id.amt_jane)
+            var amt_july=d.findViewById<EditText>(R.id.amt_july)
+            var amt_aug=d.findViewById<EditText>(R.id.amt_aug)
+            var amt_sep=d.findViewById<EditText>(R.id.amt_sep)
+            var amt_oct=d.findViewById<EditText>(R.id.amt_oct)
+            var amt_nov=d.findViewById<EditText>(R.id.amt_nov)
+            var amt_dec=d.findViewById<EditText>(R.id.amt_dec)
+
+            var btn_save=d.findViewById<Button>(R.id.btn_save)
+
+            btn_save.setOnClickListener {
+
+                Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show()
+                budget_amount.add(0,Integer.valueOf(amt_jan.text.toString()))
+                budget_amount.add(1,Integer.valueOf(amt_feb.text.toString()))
+                budget_amount.add(2,Integer.valueOf(amt_march.text.toString()))
+                budget_amount.add(3,Integer.valueOf(amt_april.text.toString()))
+                budget_amount.add(4,Integer.valueOf(amt_may.text.toString()))
+                budget_amount.add(5,Integer.valueOf(amt_june.text.toString()))
+                budget_amount.add(6,Integer.valueOf(amt_july.text.toString()))
+                budget_amount.add(7,Integer.valueOf(amt_aug.text.toString()))
+                budget_amount.add(8,Integer.valueOf(amt_sep.text.toString()))
+                budget_amount.add(9,Integer.valueOf(amt_oct.text.toString()))
+                budget_amount.add(10,Integer.valueOf(amt_nov.text.toString()))
+                budget_amount.add(11,Integer.valueOf(amt_dec.text.toString()))
+
+                for (i in 0 until budget_amount.size){
+                    Log.d("budarr","${budget_amount[i]}")
+                }
+
+                d.dismiss()
+
+            }
+
+                d.show()
+        }
 
         var onclick = true
 
@@ -156,21 +215,15 @@ class Monthly_History : AppCompatActivity() {
 
     }
 
-    private fun setmonth(month: Int, txt_budget: TextView) {
+    private fun setmonth(month: Int, txt_budget: TextView, budget_amount: ArrayList<Int>) {
 
         var budget_arraylist = arrayListOf<Int>()
-        budget_arraylist.add(0, 0)
-        budget_arraylist.add(1, 10000)
-        budget_arraylist.add(2, 20000)
-        budget_arraylist.add(3, 30000)
-        budget_arraylist.add(4, 40000)
-        budget_arraylist.add(5, 50000)
-        budget_arraylist.add(6, 60000)
-        budget_arraylist.add(7, 70000)
-        budget_arraylist.add(8, 80000)
-        budget_arraylist.add(9, 90000)
-        budget_arraylist.add(10, 100000)
-        budget_arraylist.add(11, 110000)
+
+
+        for (i in 0 until budget_amount.size){
+
+            budget_arraylist.add(i,budget_amount[i])
+        }
 
         when (month) {
             0 -> {
@@ -223,7 +276,6 @@ class Monthly_History : AppCompatActivity() {
                 txt_budget.text = budget_arraylist.get(11).toString()
             }
         }
-
 
     }
 

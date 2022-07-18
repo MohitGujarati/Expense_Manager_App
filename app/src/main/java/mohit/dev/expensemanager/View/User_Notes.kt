@@ -41,19 +41,18 @@ class User_Notes : AppCompatActivity() {
         setContentView(R.layout.activity_user_notes)
 
         var totalamount = findViewById<TextView>(R.id.tv_totalExpence)
-        var tv_txtper = findViewById<TextView>(R.id.tv_txtper)
+        var tv_txtper = findViewById<TextView>(R.id.tv_txtper2)
         var btn_addnotes = findViewById<ExtendedFloatingActionButton>(R.id.btn_addnotes)
         var rec_notes = findViewById<RecyclerView>(R.id.rec_savednotes)
 
         var viewhistory = findViewById<ImageView>(R.id.viewhistory)
-        var btn_budget = findViewById<ImageView>(R.id.btn_budget)
         var btn_GoHome = findViewById<MaterialButton>(R.id.btn_GoHome)
         var rec_chips = findViewById<RecyclerView>(R.id.rec_Categorychips)
         var rec_chip_list = findViewById<RecyclerView>(R.id.rec_showchipdata)
         var show_chip = findViewById<MaterialButton>(R.id.show_chip)
         var new_pgbar = findViewById<ProgressBar>(R.id.new_pgbar)
 
-
+        tv_txtper.visibility=View.GONE
         btn_GoHome.setOnClickListener {
             var i = Intent(this, User_Notes::class.java)
             startActivity(i)
@@ -70,8 +69,10 @@ class User_Notes : AppCompatActivity() {
                 show_chip.setIconResource(R.drawable.ic_arrow_down)
                 rec_chips.visibility = View.VISIBLE
                 load_category_chips(rec_chips)
+                tv_txtper.visibility=View.GONE
                 chip_clicked = false
             } else if (chip_clicked == false) {
+                tv_txtper.visibility=View.VISIBLE
                 show_chip.setIconResource(R.drawable.ic_category)
                 rec_chips.visibility = View.GONE
                 chip_clicked = true
@@ -151,7 +152,7 @@ class User_Notes : AppCompatActivity() {
         new_pgbar.setProgress(prgper.toInt())
 
         tv_txtper.visibility = View.VISIBLE
-        tv_txtper.text = " $txtchip consists $prgper % of your Total Expense "
+        tv_txtper.text = "$prgper%"
         btn_GoHome.visibility = View.VISIBLE
         btn_addnotes.visibility = View.GONE
 

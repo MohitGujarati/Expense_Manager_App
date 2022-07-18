@@ -1,7 +1,9 @@
 package mohit.dev.expensemanager.View
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +42,8 @@ class Monthly_History : AppCompatActivity() {
         var budget_amount=ArrayList<Int>()
 
         var monthpos = 0
+
+
         sp_history.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -105,9 +109,11 @@ class Monthly_History : AppCompatActivity() {
                 budget_amount.add(10,Integer.valueOf(amt_nov.text.toString()))
                 budget_amount.add(11,Integer.valueOf(amt_dec.text.toString()))
 
-                for (i in 0 until budget_amount.size){
-                    Log.d("budarr","${budget_amount[i]}")
+                for (i in 0 until budget_amount.size) {
+                    Log.d("budarr", "${budget_amount[i]}")
                 }
+
+
 
                 d.dismiss()
 

@@ -11,6 +11,10 @@
     android:padding="10dp"
     app:cardCornerRadius="20dp">
 
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,6 +63,7 @@
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
                 android:hint="Amount"
+                android:singleLine="true"
                 android:padding="5dp"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -82,6 +87,7 @@
                 android:id="@+id/amt_feb"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="200dp"
+                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
@@ -115,6 +121,7 @@
                 android:id="@+id/amt_march"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="200dp"
+                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
@@ -158,6 +165,7 @@
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
                 android:hint="Amount"
+                android:singleLine="true"
                 android:padding="5dp"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -190,6 +198,7 @@
                 android:background="@drawable/background_layout"
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
+                android:singleLine="true"
                 android:hint="Amount"
                 android:padding="5dp"
                 android:textSize="16dp"
@@ -224,6 +233,7 @@
                 android:background="@drawable/background_layout"
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
+                android:singleLine="true"
                 android:hint="Amount"
                 android:padding="5dp"
                 android:textSize="16dp"
@@ -258,6 +268,7 @@
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
                 android:hint="Amount"
+                android:singleLine="true"
                 android:padding="5dp"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -291,6 +302,7 @@
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
                 android:hint="Amount"
+                android:singleLine="true"
                 android:padding="5dp"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -324,6 +336,7 @@
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
                 android:hint="Amount"
+                android:singleLine="true"
                 android:padding="5dp"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -350,6 +363,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
+                android:singleLine="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
@@ -390,6 +404,7 @@
                 android:drawableStart="@drawable/ic_rupee"
                 android:gravity="start"
                 android:hint="Amount"
+                android:singleLine="true"
                 android:padding="5dp"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -414,6 +429,7 @@
                 android:id="@+id/amt_dec"
                 style="@style/TextAppearance.AppCompat.Body2"
                 android:layout_width="200dp"
+                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_marginRight="20dp"
@@ -455,5 +471,5 @@
 
 
     </RelativeLayout>
-
+</androidx.core.widget.NestedScrollView>
 </androidx.cardview.widget.CardView>

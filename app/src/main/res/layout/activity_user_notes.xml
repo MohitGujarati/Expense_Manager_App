@@ -82,32 +82,32 @@
 
     <ProgressBar
         android:id="@+id/new_pgbar"
-        android:layout_below="@+id/rec_Categorychips"
         style="@style/CircularDeterminateProgressBar"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_below="@+id/rec_Categorychips"
+        android:layout_gravity="center"
+        android:layout_marginLeft="100dp"
         android:indeterminateOnly="false"
         android:progress="80"
-        android:layout_marginLeft="100dp"
-        android:layout_gravity="center"
+
         android:visibility="gone"
         android:progressDrawable="@drawable/background_cricular_progressbar"
-        android:rotation="90"/>
+        android:rotation="90" />
 
-        <TextView
-            android:id="@+id/tv_txtper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/new_pgbar"
-            android:background="@drawable/background_layout"
-            android:textSize="15dp"
-            android:text="hello"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:gravity="center"
-            android:visibility="gone"
-            style="@style/TextAppearance.AppCompat.Body2"
-
+    <TextView
+        android:id="@+id/tv_txtper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/new_pgbar"
+        android:background="@drawable/background_layout"
+        android:textSize="15dp"
+        android:text="hello"
+        android:visibility="gone"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:gravity="center"
+        style="@style/TextAppearance.AppCompat.Body2"
 
         />
 
@@ -160,22 +160,26 @@
             android:layout_marginEnd="4dp"
             android:background="@drawable/background_layout"
             android:padding="5dp"
-            android:src="@drawable/ic_history"
+            android:src="@drawable/ic_savings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/btn_budget"
-            android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/tv_txtper2"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/background_layout"
-            android:padding="5dp"
-            android:src="@drawable/ic_calculate"
-            app:layout_constraintBottom_toBottomOf="@+id/viewhistory"
-            app:layout_constraintEnd_toStartOf="@+id/viewhistory"
-            app:layout_constraintTop_toTopOf="@+id/viewhistory"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginTop="235dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

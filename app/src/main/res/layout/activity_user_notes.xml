@@ -90,10 +90,12 @@
         android:layout_marginLeft="100dp"
         android:indeterminateOnly="false"
         android:progress="80"
-
         android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0F8BC6EC"
+        android:background="@drawable/background_txt_progressbar"
         android:progressDrawable="@drawable/background_cricular_progressbar"
-        android:rotation="90" />
+        android:rotation="-360" />
 
     <TextView
         android:id="@+id/tv_txtper"
@@ -170,11 +172,12 @@
             style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="235dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="255dp"
+            android:backgroundTint="#0F8BC6EC"
             android:gravity="center"
-            android:visibility="gone"
+            android:text="hello"
             android:textSize="25dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"

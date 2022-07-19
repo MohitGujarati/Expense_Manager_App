@@ -72,7 +72,7 @@ class User_Notes : AppCompatActivity() {
                 tv_txtper.visibility=View.GONE
                 chip_clicked = false
             } else if (chip_clicked == false) {
-                tv_txtper.visibility=View.VISIBLE
+                tv_txtper.visibility=View.GONE
                 show_chip.setIconResource(R.drawable.ic_category)
                 rec_chips.visibility = View.GONE
                 chip_clicked = true

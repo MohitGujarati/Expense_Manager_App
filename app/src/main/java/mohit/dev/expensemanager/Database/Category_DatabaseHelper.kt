@@ -105,47 +105,6 @@ class Category_DatabaseHelper(var context: Context) :
 
     }
 
-
-
-    //For later use
-    @SuppressLint("Range")
-    fun getAllvalid_Data(): MutableList<Category_ModelClass> {
-
-        var userlist: MutableList<Category_ModelClass> = ArrayList()
-        var sel_que = "select * from $category_TABLE_NAME where $category_KEY_categoryname like 'Hotel' ORDER BY $category_KEY_ID DESC "
-
-        var cursor: Cursor?
-        var db = this.readableDatabase
-
-        try {
-            cursor = db.rawQuery(sel_que, null)
-        } catch (Exception: SQLException) {
-            db.execSQL(sel_que)
-            return ArrayList()
-        }
-
-        var userid: Int
-        var category: String
-
-        if (cursor.count > 0) {
-            if (cursor.moveToFirst()) {
-
-                do {
-                    userid = cursor.getInt(cursor.getColumnIndex(category_KEY_ID))
-                    category = cursor.getString(cursor.getColumnIndex(category_KEY_categoryname))
-
-
-                    var userdata = Category_ModelClass(userid, category)
-                    userlist.add(userdata)
-
-
-                } while (cursor.moveToNext())
-            }
-        }
-
-        return userlist
-    }
-
 }
 
 

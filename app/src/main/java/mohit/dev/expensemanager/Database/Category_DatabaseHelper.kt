@@ -105,6 +105,9 @@ class Category_DatabaseHelper(var context: Context) :
 
     }
 
+
+
+    //For later use
     @SuppressLint("Range")
     fun getAllvalid_Data(): MutableList<Category_ModelClass> {
 

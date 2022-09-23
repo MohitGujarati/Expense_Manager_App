@@ -13,7 +13,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.convertTo
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -29,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -40,8 +38,6 @@ class MainActivity : AppCompatActivity() {
         var ed_note = findViewById<EditText>(R.id.ed_note)
         var tv_addcategory = findViewById<TextView>(R.id.tv_addcategory)
         var btn_done = findViewById<ExtendedFloatingActionButton>(R.id.btn_done)
-
-
 
         //date
         var Todaydate = Calendar.getInstance()
@@ -96,23 +92,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        //setting onclick recview data
-
-        val custom_pref = "userdata"
-        val sharedPreferences: SharedPreferences =
-            this.getSharedPreferences(custom_pref, Context.MODE_PRIVATE)
-
-
-        var txt=ed_categoryname.setHint("Type Of Expen"+"$"+"e")
-        var shared_value = sharedPreferences.getString("Key_email", "")
-        var editor = sharedPreferences.edit()
-        editor.clear()
-        editor.commit()
-        ed_categoryname.setText(shared_value)
-        //ed_categoryname.setText(categoryname.toString())
 
         //recview
-        load_category(rec_cat)
+        load_category(rec_cat,ed_categoryname)
 
         //add category
         tv_addcategory.setOnClickListener {
@@ -146,11 +128,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        //clear catch data
-
-
     }
-    private fun load_category(recCat: RecyclerView) {
+    private fun load_category(recCat: RecyclerView, ed_categoryname: EditText) {
 
         recCat.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
 
@@ -159,7 +138,11 @@ class MainActivity : AppCompatActivity() {
         var userlist: MutableList<Category_ModelClass>
         userlist = db_helper.getAllCategory_Data()
 
-        var connect_Adapter = Mycategory_Adapter(this, userlist)
+        var connect_Adapter = Mycategory_Adapter(this, userlist,object :Mycategory_Adapter.onclickcartegory{
+            override fun onclickcardcatergory(categoryname: String) {
+                ed_categoryname.setText(categoryname.toString())
+            }
+        })
         recCat.adapter = connect_Adapter
 
     }

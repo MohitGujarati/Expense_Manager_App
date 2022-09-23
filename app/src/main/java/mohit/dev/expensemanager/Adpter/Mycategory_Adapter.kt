@@ -17,8 +17,17 @@ import mohit.dev.expensemanager.Model.Category_ModelClass
 import mohit.dev.expensemanager.R
 import mohit.dev.expensemanager.View.MainActivity
 
-class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Category_ModelClass>) :
-    RecyclerView.Adapter<Mycategory_Adapter.ViewHolder>() {
+class Mycategory_Adapter(
+    var context: Context,
+    var cat_Arraylist: MutableList<Category_ModelClass>,
+    var OncategoryClicked:onclickcartegory
+
+) : RecyclerView.Adapter<Mycategory_Adapter.ViewHolder>() {
+
+
+    interface onclickcartegory{
+        fun onclickcardcatergory(categoryname:String)
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -54,30 +63,9 @@ class Mycategory_Adapter(var context: Context, var cat_Arraylist: MutableList<Ca
         var onclick = true
         holder.categorylayout.setOnClickListener {
 
+            OncategoryClicked.onclickcardcatergory(mymodel.userCategory.toString())
 
-            if (onclick == true) {
-                holder.categorylayout.setBackgroundColor(context.getColor(R.color.purple_200))
-
-//                val passdata = Intent(context, MainActivity::class.java)
-//                passdata.putExtra("categoryname", mymodel.userCategory)
-//                context.startActivity(passdata)
-
-                editor.putString("Key_email", mymodel.userCategory.toString())
-                editor.putBoolean("key_status", true)
-                editor.apply()
-                editor.commit()
-
-                var i = Intent(context, MainActivity::class.java)
-                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                context.startActivity(i)
-
-                onclick = false
-            } else {
-                holder.categorylayout.setBackgroundDrawable(context.getDrawable(R.drawable.background_category))
-                onclick = true
-            }
-
+            Toast.makeText(context, "clicked ${mymodel.userCategory.toString()}", Toast.LENGTH_SHORT).show()
 
         }
         holder.btn_delete.setOnClickListener {

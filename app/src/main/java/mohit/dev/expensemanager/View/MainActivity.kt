@@ -2,9 +2,7 @@ package mohit.dev.expensemanager.View
 
 import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -83,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 i.putExtra("passed", Integer.valueOf(amount))
                 i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                overridePendingTransition(0,0)
+                overridePendingTransition(0, 0)
                 // Toast.makeText(this, "saved at $id ${ed_amount.toString()},${ed_categoryname.toString()} ${ed_note.toString()}", Toast.LENGTH_SHORT).show()
                 startActivity(i)
 
@@ -94,7 +92,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //recview
-        load_category(rec_cat,ed_categoryname)
+        load_category(rec_cat, ed_categoryname)
+
 
         //add category
         tv_addcategory.setOnClickListener {
@@ -107,6 +106,7 @@ class MainActivity : AppCompatActivity() {
             var dialog_categoryname = d.findViewById<EditText>(R.id.ed_categoryName)
             var btn_savecategory = d.findViewById<Button>(R.id.btn_add)
             var dbhelper = Category_DatabaseHelper(this)
+
 
             btn_savecategory.setOnClickListener {
                 var id = dbhelper.insertData(
@@ -129,6 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
     private fun load_category(recCat: RecyclerView, ed_categoryname: EditText) {
 
         recCat.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
@@ -138,22 +139,23 @@ class MainActivity : AppCompatActivity() {
         var userlist: MutableList<Category_ModelClass>
         userlist = db_helper.getAllCategory_Data()
 
-        var connect_Adapter = Mycategory_Adapter(this, userlist,object :Mycategory_Adapter.onclickcartegory{
-            override fun onclickcardcatergory(categoryname: String) {
-                ed_categoryname.setText(categoryname.toString())
-            }
-        })
+        var connect_Adapter =
+            Mycategory_Adapter(this, userlist, object : Mycategory_Adapter.onclickcartegory {
+                override fun onclickcardcatergory(categoryname: String) {
+                    ed_categoryname.setText(categoryname.toString())
+                }
+            })
         recCat.adapter = connect_Adapter
 
     }
 
     override fun onBackPressed() {
-        var i =Intent(this,User_Notes::class.java)
+        var i = Intent(this, User_Notes::class.java)
 
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i)
-        overridePendingTransition(0,0)
+        overridePendingTransition(0, 0)
         finish()
     }
 

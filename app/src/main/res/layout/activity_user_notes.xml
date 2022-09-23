@@ -12,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/Expensecard"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:backgroundTint="#1481ACF6"
         >
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Expensecard"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="7dp"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
@@ -102,9 +102,10 @@
         android:backgroundTint="#0F8BC6EC"
         android:indeterminateOnly="false"
         android:progress="80"
+        android:visibility="gone"
         android:progressDrawable="@drawable/background_cricular_progressbar"
         android:rotation="-360"
-        android:visibility="gone" />
+         />
 
     <TextView
         android:id="@+id/tv_txtper"
@@ -181,10 +182,10 @@
             style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="160dp"
             android:backgroundTint="#0F8BC6EC"
             android:gravity="center"
-            android:text="hello"
+            android:text="progress bar persentage"
             android:textSize="25dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"

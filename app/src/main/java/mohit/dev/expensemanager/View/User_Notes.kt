@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,7 @@ import mohit.dev.expensemanager.R
 
 class User_Notes : AppCompatActivity() {
 
+    lateinit var Expensecard: CardView
     var backPressedTime: Long = 0
     var chip_clicked = true
     var gohome = false
@@ -51,8 +53,9 @@ class User_Notes : AppCompatActivity() {
         var rec_chip_list = findViewById<RecyclerView>(R.id.rec_showchipdata)
         var show_chip = findViewById<MaterialButton>(R.id.show_chip)
         var new_pgbar = findViewById<ProgressBar>(R.id.new_pgbar)
+        Expensecard = findViewById(R.id.Expensecard)
 
-        tv_txtper.visibility=View.GONE
+        tv_txtper.visibility = View.GONE
         btn_GoHome.setOnClickListener {
             var i = Intent(this, User_Notes::class.java)
             startActivity(i)
@@ -69,10 +72,10 @@ class User_Notes : AppCompatActivity() {
                 show_chip.setIconResource(R.drawable.ic_arrow_down)
                 rec_chips.visibility = View.VISIBLE
                 load_category_chips(rec_chips)
-                tv_txtper.visibility=View.GONE
+                tv_txtper.visibility = View.GONE
                 chip_clicked = false
             } else if (chip_clicked == false) {
-                tv_txtper.visibility=View.GONE
+                tv_txtper.visibility = View.GONE
                 show_chip.setIconResource(R.drawable.ic_category)
                 rec_chips.visibility = View.GONE
                 chip_clicked = true
@@ -80,6 +83,7 @@ class User_Notes : AppCompatActivity() {
         }
 
         if (msg != null) {
+            Expensecard.visibility=View.GONE
             rec_chip_list.visibility = View.VISIBLE
             var txtchip = msg.toString()
             load_category_notes(
